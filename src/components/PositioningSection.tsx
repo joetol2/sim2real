@@ -1,4 +1,4 @@
-import simulationImage from "@/assets/simulation-abstract.jpg";
+import ansysImage from "@/assets/ansys-fea.webp";
 
 const PositioningSection = () => {
   return (
@@ -23,12 +23,10 @@ const PositioningSection = () => {
           {/* Image side */}
           <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
             <img
-              src={simulationImage}
-              alt="Abstract simulation data visualization"
+              src={ansysImage}
+              alt="Finite element analysis of a robotic structure"
               className="w-full h-full object-cover"
               loading="lazy"
-              width={1920}
-              height={800}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
           </div>

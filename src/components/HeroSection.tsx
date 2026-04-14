@@ -1,18 +1,21 @@
-import heroImage from "@/assets/hero-abstract.jpg";
+import heroVideo from "@/assets/sim4real_test.webm";
+import heroPoster from "@/assets/robot-learning.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex flex-col">
-      {/* Full-bleed hero image */}
+      {/* Full-bleed hero video */}
       <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Precision-engineered robotic mechanism"
+        <video
+          src={heroVideo}
+          poster={heroPoster}
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
-          width={1920}
-          height={1080}
         />
-        {/* Dark overlay for text legibility */}
+        {/* Dark overlays for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
       </div>
@@ -30,7 +33,7 @@ const HeroSection = () => {
         </a>
       </nav>
 
-      {/* Hero content — bottom-left aligned, editorial style */}
+      {/* Hero content — bottom-left aligned */}
       <div className="relative z-10 mt-auto px-8 sm:px-12 pb-24 sm:pb-32 max-w-3xl">
         <div className="animate-fade-up">
           <div className="w-8 h-px bg-primary mb-8" />
