@@ -1,13 +1,19 @@
 const ContactCTA = () => {
   return (
-    <section className="py-24 sm:py-32">
-      <div className="max-w-xl mx-auto px-6 text-center">
-        <p className="text-text-body text-lg mb-8">Interested in what we're building?</p>
+    <section className="py-32 sm:py-48">
+      <div className="max-w-6xl mx-auto px-8 sm:px-12 text-center">
+        <p className="text-xs font-heading tracking-[0.3em] uppercase text-primary mb-8">
+          Get in touch
+        </p>
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-bold tracking-tight leading-[1.1] mb-8">
+          Interested in what<br />we're building?
+        </h2>
         <a
           href="mailto:hello@realsim.ai"
-          className="inline-flex items-center justify-center rounded-md border border-primary/50 bg-transparent px-8 py-3 text-sm font-heading font-medium text-primary transition-all duration-300 hover:bg-primary/10 hover:border-primary"
+          className="inline-flex items-center gap-3 text-base font-heading font-medium text-foreground border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-colors duration-300"
         >
-          Contact Us
+          hello@realsim.ai
+          <span className="text-primary">→</span>
         </a>
       </div>
     </section>

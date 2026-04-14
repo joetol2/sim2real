@@ -1,18 +1,18 @@
-import { Activity, Layers, Users } from "lucide-react";
+import detailImage from "@/assets/detail-abstract.jpg";
 
-const cards = [
+const focuses = [
   {
-    icon: Activity,
+    number: "01",
     title: "Real-World Performance",
     description: "Improving how robotic systems behave outside the lab.",
   },
   {
-    icon: Layers,
+    number: "02",
     title: "Simulation Workflows",
     description: "Exploring better ways to support training, testing, and transfer.",
   },
   {
-    icon: Users,
+    number: "03",
     title: "Selective Collaboration",
     description: "Speaking with a small number of aligned partners and early supporters.",
   },
@@ -20,19 +20,52 @@ const cards = [
 
 const FocusCards = () => {
   return (
-    <section className="py-24 sm:py-32">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {cards.map((card) => (
-            <div
-              key={card.title}
-              className="group rounded-lg border border-border bg-card p-8 transition-colors duration-300 hover:border-primary/30"
-            >
-              <card.icon className="w-5 h-5 text-primary mb-5" strokeWidth={1.5} />
-              <h3 className="font-heading text-base font-semibold mb-3">{card.title}</h3>
-              <p className="text-sm text-text-body leading-relaxed">{card.description}</p>
+    <section className="py-24 sm:py-40 border-t border-border">
+      <div className="max-w-6xl mx-auto px-8 sm:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+          {/* Left column — image */}
+          <div className="md:col-span-5 relative">
+            <div className="sticky top-24">
+              <div className="aspect-[3/4] rounded-sm overflow-hidden">
+                <img
+                  src={detailImage}
+                  alt="Precision robotic mechanism detail"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  width={800}
+                  height={1000}
+                />
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right column — focus areas */}
+          <div className="md:col-span-7 flex flex-col justify-center">
+            <p className="text-xs font-heading tracking-[0.3em] uppercase text-primary mb-12">
+              Focus Areas
+            </p>
+
+            <div className="space-y-12">
+              {focuses.map((focus) => (
+                <div
+                  key={focus.number}
+                  className="group border-t border-border pt-8"
+                >
+                  <div className="flex items-baseline gap-6 mb-3">
+                    <span className="text-xs font-heading text-primary tracking-wider">
+                      {focus.number}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-heading font-semibold tracking-tight">
+                      {focus.title}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-text-body leading-relaxed pl-12 sm:pl-14 max-w-md">
+                    {focus.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
