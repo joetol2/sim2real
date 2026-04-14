@@ -13,7 +13,7 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover min-w-full min-h-full"
         />
         {/* Dark overlays for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
@@ -38,8 +38,8 @@ const HeroSection = () => {
         <div className="animate-fade-up">
           <div className="w-8 h-px bg-primary mb-8" />
         </div>
-        <h1 className="animate-fade-up-delay-1 text-4xl sm:text-6xl md:text-7xl font-heading font-bold tracking-tight leading-[1.05] mb-6">
-          In stealth<br />mode.
+        <h1 className="animate-fade-up-delay-1 text-2xl sm:text-3xl md:text-4xl font-heading font-medium tracking-tight leading-[1.15] mb-6 text-foreground/80">
+          In stealth mode.
         </h1>
         <p className="animate-fade-up-delay-2 text-base sm:text-lg text-text-body leading-relaxed max-w-lg">
           We're building technology focused on helping robots perform more
