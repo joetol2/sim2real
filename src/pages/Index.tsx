@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import VideoShowcase from "@/components/VideoShowcase";
 import PositioningSection from "@/components/PositioningSection";
 import FocusCards from "@/components/FocusCards";
 import StealthStatement from "@/components/StealthStatement";
@@ -9,6 +10,7 @@ const Index = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <HeroSection />
+      <VideoShowcase />
       <PositioningSection />
       <FocusCards />
       <StealthStatement />

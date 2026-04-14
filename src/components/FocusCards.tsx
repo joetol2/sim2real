@@ -28,43 +28,34 @@ const focuses = [
 
 const FocusCards = () => {
   return (
-    <section className="py-24 sm:py-40 border-t border-border">
-      <div className="max-w-6xl mx-auto px-8 sm:px-12">
-        <p className="text-xs font-heading tracking-[0.3em] uppercase text-primary mb-16">
+    <section className="py-24 sm:py-32 border-t border-border">
+      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
+        <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-16">
           Focus Areas
         </p>
 
-        <div className="space-y-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {focuses.map((focus) => (
-            <div
-              key={focus.number}
-              className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center border-t border-border pt-12"
-            >
-              {/* Image */}
-              <div className="md:col-span-5 relative aspect-video rounded-sm overflow-hidden">
+            <div key={focus.number} className="group">
+              <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-6 bg-card">
                 <img
                   src={focus.image}
                   alt={focus.alt}
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
               </div>
-
-              {/* Text */}
-              <div className="md:col-span-7 flex flex-col justify-center">
-                <div className="flex items-baseline gap-6 mb-3">
-                  <span className="text-xs font-heading text-primary tracking-wider">
-                    {focus.number}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-heading font-semibold tracking-tight">
-                    {focus.title}
-                  </h3>
-                </div>
-                <p className="text-sm text-text-body leading-relaxed pl-12 sm:pl-14 max-w-md">
-                  {focus.description}
-                </p>
+              <div className="flex items-baseline gap-4 mb-2">
+                <span className="text-xs font-heading text-muted-foreground tracking-wider">
+                  {focus.number}
+                </span>
+                <h3 className="text-lg font-heading font-semibold tracking-tight">
+                  {focus.title}
+                </h3>
               </div>
+              <p className="text-sm text-text-body leading-relaxed pl-8">
+                {focus.description}
+              </p>
             </div>
           ))}
         </div>

@@ -6,39 +6,38 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 0 0% 100%;
+    --background: 40 20% 97%;
+    --foreground: 220 20% 12%;
 
-    --card: 220 18% 8%;
-    --card-foreground: 220 10% 75%;
+    --card: 40 15% 94%;
+    --card-foreground: 220 15% 20%;
 
-    --popover: 220 18% 8%;
-    --popover-foreground: 220 10% 75%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
 
-    --primary: 30 70% 55%;
-    --primary-foreground: 220 20% 4%;
+    --primary: 220 18% 20%;
+    --primary-foreground: 40 20% 97%;
 
-    --secondary: 220 15% 12%;
-    --secondary-foreground: 220 10% 70%;
+    --secondary: 40 10% 90%;
+    --secondary-foreground: 220 15% 30%;
 
-    --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 40 10% 92%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 30 70% 55%;
-    --accent-foreground: 220 20% 4%;
+    --accent: 220 18% 20%;
+    --accent-foreground: 40 20% 97%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 15%;
-    --input: 220 15% 15%;
-    --ring: 30 70% 55%;
+    --border: 220 10% 88%;
+    --input: 220 10% 88%;
+    --ring: 220 18% 20%;
 
     --radius: 0.5rem;
 
-    --text-secondary: 220 10% 55%;
-    --text-body: 220 10% 70%;
-    --glow: 30 70% 55%;
+    --text-secondary: 220 10% 50%;
+    --text-body: 220 10% 40%;
   }
 }
 
@@ -72,24 +71,6 @@
   }
 }
 
-@keyframes gradient-drift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
 .animate-fade-up {
   animation: fade-up 0.8s ease-out both;
 }
@@ -104,13 +85,4 @@
 
 .animate-fade-up-delay-3 {
   animation: fade-up 0.8s ease-out 0.45s both;
-}
-
-.animate-gradient-drift {
-  animation: gradient-drift 12s ease infinite;
-  background-size: 200% 200%;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
 }

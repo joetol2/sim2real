@@ -1,10 +1,10 @@
 const StealthStatement = () => {
   return (
     <section className="py-24 sm:py-32 border-t border-border">
-      <div className="max-w-6xl mx-auto px-8 sm:px-12">
+      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-4">
-            <p className="text-xs font-heading tracking-[0.3em] uppercase text-primary">
+            <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground">
               Status
             </p>
           </div>
