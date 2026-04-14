@@ -14,7 +14,7 @@ const PositioningSection = () => {
             </h2>
             <p className="text-base text-text-body leading-relaxed">
               Our work sits at the intersection of robotics, simulation, and
-              deployment — improving how robotic systems transfer from training
+              deployment, improving how robotic systems transfer from training
               environments to the physical world.
             </p>
           </div>
