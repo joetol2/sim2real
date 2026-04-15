@@ -6,38 +6,38 @@
 
 @layer base {
   :root {
-    --background: 40 20% 97%;
-    --foreground: 220 20% 12%;
+    --background: 212 70% 18%;
+    --foreground: 0 0% 97%;
 
-    --card: 40 15% 94%;
-    --card-foreground: 220 15% 20%;
+    --card: 212 65% 22%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 20%;
+    --popover: 212 65% 16%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 220 18% 20%;
-    --primary-foreground: 40 20% 97%;
+    --primary: 0 0% 97%;
+    --primary-foreground: 212 70% 18%;
 
-    --secondary: 40 10% 90%;
-    --secondary-foreground: 220 15% 30%;
+    --secondary: 212 50% 28%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 40 10% 92%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 212 50% 25%;
+    --muted-foreground: 212 20% 65%;
 
-    --accent: 220 18% 20%;
-    --accent-foreground: 40 20% 97%;
+    --accent: 0 0% 97%;
+    --accent-foreground: 212 70% 18%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 88%;
-    --input: 220 10% 88%;
-    --ring: 220 18% 20%;
+    --border: 212 40% 38%;
+    --input: 212 40% 32%;
+    --ring: 0 0% 90%;
 
     --radius: 0.5rem;
 
-    --text-secondary: 220 10% 50%;
-    --text-body: 220 10% 40%;
+    --text-secondary: 212 20% 65%;
+    --text-body: 212 15% 82%;
   }
 }
 
@@ -51,7 +51,10 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply text-foreground font-body antialiased;
+    background: linear-gradient(to top right, #016fb5, #003d89);
+    background-attachment: fixed;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
