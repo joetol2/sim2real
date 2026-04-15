@@ -45,13 +45,14 @@ const SimulationSection = () => {
       });
 
     const base = import.meta.env.BASE_URL;
+    const v = "2";
     const scripts = [
-      `${base}fizx/fizx.js`,
-      `${base}fizx/ball16.js`,
-      `${base}fizx/ball23.js`,
-      `${base}fizx/delaunay.js`,
-      `${base}fizx/display_canvas.js`,
-      `${base}fizx/test.js`,
+      `${base}fizx/fizx.js?v=${v}`,
+      `${base}fizx/ball16.js?v=${v}`,
+      `${base}fizx/ball23.js?v=${v}`,
+      `${base}fizx/delaunay.js?v=${v}`,
+      `${base}fizx/display_canvas.js?v=${v}`,
+      `${base}fizx/test.js?v=${v}`,
     ];
 
     (async () => {
