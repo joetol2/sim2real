@@ -124,14 +124,9 @@ const SimulationSection = () => {
         </div>
         <p className="text-sm text-muted-foreground mt-4">
           Drag objects to interact.{" "}
-          <a
-            href="https://busyboxes.org/fizx2/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline"
-          >
+          
             Simulation by Dan Miller.
-          </a>
+          
         </p>
       </div>
     </section>
