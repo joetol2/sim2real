@@ -73,33 +73,22 @@ function Scene({ modelUrl }: { modelUrl: string }) {
   );
 }
 
-const MODEL_URL = `${import.meta.env.BASE_URL}models/tycho_decimated.stl`;
-
-export default function RobotViewer() {
+function ViewerCell({ modelUrl, label }: { modelUrl: string; label: string }) {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
-    <section className="py-24 sm:py-32 border-t border-border">
-      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
-        <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">
-          Robot Model
-        </p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold tracking-tight leading-[1.15] mb-10">
-          Interactive 3D model.
-        </h2>
-      </div>
-      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
-      <div style={{ width: "100%", height: "600px" }}>
+    <div className="flex flex-col gap-2">
+      <div style={{ width: "100%", height: "300px" }}>
         <Canvas
           camera={{
             position: isMobile ? [15, 10, 15] : [12, 10, 12],
-            fov: isMobile ? 60 : 70,
+            fov: 70,
             up: [0, 1, 0],
           }}
           style={{ background: "rgb(10, 16, 30)" }}
         >
           <fog attach="fog" args={["#0a101e", 25, 50]} />
-          <Scene modelUrl={MODEL_URL} />
+          <Scene modelUrl={modelUrl} />
           <OrbitControls
             enableZoom={true}
             zoomSpeed={0.5}
@@ -117,9 +106,38 @@ export default function RobotViewer() {
           />
         </Canvas>
       </div>
-      </div>
-      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 mt-4">
-        <p className="text-sm text-muted-foreground">
+      <p className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+const MODEL_URL = `${import.meta.env.BASE_URL}models/tycho_decimated.stl`;
+
+const models = [
+  { url: MODEL_URL, label: "Model 01" },
+  { url: MODEL_URL, label: "Model 02" },
+  { url: MODEL_URL, label: "Model 03" },
+  { url: MODEL_URL, label: "Model 04" },
+];
+
+export default function RobotViewer() {
+  return (
+    <section className="py-24 sm:py-32 border-t border-border">
+      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
+        <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">
+          Robot Model
+        </p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold tracking-tight leading-[1.15] mb-10">
+          Interactive 3D model.
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {models.map((m) => (
+            <ViewerCell key={m.label} modelUrl={m.url} label={m.label} />
+          ))}
+        </div>
+        <p className="text-sm text-muted-foreground mt-4">
           Drag to rotate. Scroll to zoom.
         </p>
       </div>
