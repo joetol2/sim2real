@@ -127,10 +127,10 @@ export default function RobotViewer() {
     <section className="py-24 sm:py-32 border-t border-border">
       <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
         <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">
-          Robot Model
+          Robot Models
         </p>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold tracking-tight leading-[1.15] mb-10">
-          Interactive 3D model.
+          Interactive 3D models.
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {models.map((m) => (
