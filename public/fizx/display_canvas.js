@@ -2,10 +2,10 @@
  * simple API to display, canvas implementation
  */
 
-BOND_COLOR = "#6ba4d0";
-ATOM_COLOR = "#90d0f0";
-ATOM_COLOR2 = "#b0c8e8";
-CONTACT_COLOR = "#8888cc";
+BOND_COLOR = "#a0c8e8";
+ATOM_COLOR = "#c8e8ff";
+ATOM_COLOR2 = "#90c4e4";
+CONTACT_COLOR = "#b8a0f0";
 
 display_init = function() {
   g_canvas = document.getElementById("canvas");
@@ -49,10 +49,12 @@ display_line = function(x, y, x2, y2, color,w) {
 }
 
 display_clear = function() {
-  // Opposite diagonal to the site background (site: #016fb5 lower-left → #013575 upper-right)
-  var grad = g_context.createLinearGradient(0, HEIGHT, WIDTH, 0);
-  grad.addColorStop(0, "#013575"); // lower-left = dark
-  grad.addColorStop(1, "#016fb5"); // upper-right = medium blue
+  // Vertical gradient: near-black at top (deep space/distance),
+  // lightening toward the bottom (foreground/surface) for a 3D depth effect
+  var grad = g_context.createLinearGradient(0, 0, 0, HEIGHT);
+  grad.addColorStop(0,    "#010e20"); // top — very dark, deep space
+  grad.addColorStop(0.45, "#013575"); // mid — site's dark blue
+  grad.addColorStop(1,    "#1f7bc8"); // bottom — lighter blue, foreground
   g_context.fillStyle = grad;
   g_context.fillRect(0, 0, WIDTH, HEIGHT);
 }
