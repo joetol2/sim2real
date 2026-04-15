@@ -62,6 +62,40 @@
   }
 }
 
+/* Gradient horizontal rules */
+hr {
+  border: none;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 33%,
+    rgba(255, 255, 255, 1) 66%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Section dividers — replace solid border-t with gradient pseudo-element */
+section.border-t {
+  border-top: none;
+  position: relative;
+}
+section.border-t::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 33%,
+    rgba(255, 255, 255, 1) 66%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
 /* Animations */
 @keyframes fade-up {
   from {
