@@ -1,7 +1,16 @@
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
 const ContactCTA = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section className="py-32 sm:py-48 border-t border-border">
-      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 text-center">
+      <div
+        ref={ref}
+        className={`max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 text-center transition-all duration-700 ease-out ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
         <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-8">
           Get in touch
         </p>

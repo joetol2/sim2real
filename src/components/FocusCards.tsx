@@ -1,6 +1,7 @@
 import rvizImage from "@/assets/rviz_tyko.png";
 import pathPlanningImage from "@/assets/path-planning.avif";
 import tecnomatixImage from "@/assets/tecnomatix.jpg";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const focuses = [
   {
@@ -27,16 +28,29 @@ const focuses = [
 ];
 
 const FocusCards = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section className="py-24 sm:py-32 border-t border-border">
-      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
+      <div
+        ref={ref}
+        className={`max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 transition-all duration-700 ease-out ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
         <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-16">
           Focus Areas
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {focuses.map((focus) => (
-            <div key={focus.number} className="group">
+          {focuses.map((focus, i) => (
+            <div
+              key={focus.number}
+              className={`group transition-all duration-700 ease-out ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+              style={{ transitionDelay: isVisible ? `${i * 150}ms` : "0ms" }}
+            >
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-6 bg-card">
                 <img
                   src={focus.image}
