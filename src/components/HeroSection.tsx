@@ -7,7 +7,7 @@ const HeroSection = () => {
           RealSim
         </span>
         <a
-          href="mailto:hello@realsim.ai"
+          href="mailto:hello@realsim.bot"
           className="text-xs font-heading tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
         >
           Contact

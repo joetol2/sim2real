@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Footer = () => {
@@ -14,6 +15,26 @@ const Footer = () => {
         <span className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground">
           RealSim
         </span>
+        <nav className="flex items-center gap-6">
+          <Link
+            to="/demos"
+            className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+          >
+            Demos
+          </Link>
+          <Link
+            to="/physics"
+            className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+          >
+            Physics
+          </Link>
+          <Link
+            to="/models"
+            className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+          >
+            Models
+          </Link>
+        </nav>
         <span className="text-xs text-muted-foreground">
           © 2026
         </span>
