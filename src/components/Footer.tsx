@@ -12,9 +12,12 @@ const Footer = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <span className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground">
+        <Link
+          to="/"
+          className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+        >
           RealSim
-        </span>
+        </Link>
         <nav className="flex items-center gap-6">
           <Link
             to="/demos"
