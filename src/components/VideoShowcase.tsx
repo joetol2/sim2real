@@ -8,8 +8,8 @@ const VideoShowcase = () => {
   return (
     <section className="px-4 sm:px-8 lg:px-16 pb-24 sm:pb-32">
       {/* Show only the simulation (left) panel of the video.
-          Scale to 185% wide so the ~54% sim side fills the full container width.
-          Shift up by -35% of container height to hide the top black bar. */}
+          Scale to 205% wide so the sim side fills the container.
+          Shift up by -55% of container height to hide the top black bar. */}
       <div
         ref={ref}
         className={`relative w-full aspect-video rounded-lg overflow-hidden bg-card transition-all duration-700 ease-out ${
@@ -25,8 +25,8 @@ const VideoShowcase = () => {
           playsInline
           style={{
             position: "absolute",
-            width: "185%",
-            top: "-35%",
+            width: "205%",
+            top: "-55%",
             left: 0,
           }}
         />
