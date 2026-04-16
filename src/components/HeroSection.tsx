@@ -24,7 +24,7 @@ const HeroSection = () => {
           </div>
          
           <p className="animate-fade-up-delay-2 text-base sm:text-lg text-text-body leading-relaxed max-w-xl mx-auto">
-            RealSim is focused on the gap between simulated training and
+            RealSIM is focused on the gap between simulated training and
             real-world robot behavior. We're not ready to say more yet.
           </p>
         </div>
