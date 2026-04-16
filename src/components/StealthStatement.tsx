@@ -13,7 +13,7 @@ const StealthStatement = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-4">
-            <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground">
+            <p className="text-base font-heading tracking-[0.3em] uppercase text-muted-foreground">
               Status
             </p>
           </div>

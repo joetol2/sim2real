@@ -18,7 +18,7 @@ const HeroSection = () => {
       <div className="flex-1 flex items-center justify-center px-8 sm:px-12 lg:px-20">
         <div className="max-w-3xl text-center">
           <div className="animate-fade-up">
-            <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-8">
+            <p className="text-base font-heading tracking-[0.3em] uppercase text-muted-foreground mb-8">
               Stealth Mode
             </p>
           </div>

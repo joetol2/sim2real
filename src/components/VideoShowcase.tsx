@@ -6,9 +6,8 @@ const VideoShowcase = () => {
   const { ref, isVisible } = useScrollReveal(0.95);
 
   return (
-   
+
     <section className="px-4 sm:px-8 lg:px-16 pb-24 sm:pb-32">
-      
       <div
         ref={ref}
         className={`relative w-full aspect-video rounded-lg overflow-hidden bg-card transition-all duration-700 ease-out ${
@@ -31,7 +30,6 @@ const VideoShowcase = () => {
         />
       </div>
     </section>
-  
 
 
   );

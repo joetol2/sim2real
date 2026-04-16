@@ -11,7 +11,7 @@ const ContactCTA = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-8">
+        <p className="text-base font-heading tracking-[0.3em] uppercase text-muted-foreground mb-8">
           Get in touch
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-semibold tracking-tight leading-[1.1] mb-8">

@@ -14,7 +14,7 @@ const PositioningSection = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div>
-            <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">
+            <p className="text-base font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">
               What we do
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">

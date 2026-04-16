@@ -38,7 +38,7 @@ const FocusCards = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-16">
+        <p className="text-base font-heading tracking-[0.3em] uppercase text-muted-foreground mb-16">
           Focus Areas
         </p>
 
