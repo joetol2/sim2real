@@ -52,7 +52,7 @@
 
   body {
     @apply text-foreground font-body antialiased;
-    background: linear-gradient(to top right, #016fb5, #013575);
+    background: linear-gradient(to top right, #016fb5, #012b62);
     background-attachment: fixed;
     min-height: 100vh;
   }
