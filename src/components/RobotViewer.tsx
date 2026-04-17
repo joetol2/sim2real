@@ -117,7 +117,7 @@ const BASE = import.meta.env.BASE_URL;
 
 const models = [
   { url: `${BASE}models/tycho_decimated.stl`, label: "Tycho", scale: 0.008 },
-  { url: `${BASE}models/tycho.gltf`, label: "Tycho (glTF)", scale: 0.8 },
+  { url: `${BASE}models/tycho.gltf`, label: "Tycho (glTF)", scale: 0.04 },
   { url: `${BASE}models/rolli_assembly_05.stl`, label: "Rolli", scale: 0.008 },
 ];
 
