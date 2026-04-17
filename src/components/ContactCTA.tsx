@@ -18,10 +18,10 @@ const ContactCTA = () => {
           Interested in what<br />we're building?
         </h2>
         <a
-          href="mailto:hello@realsim.bot"
+          href="mailto:hello@sim2real.bot"
           className="inline-flex items-center gap-3 text-base font-heading font-medium text-foreground border-b border-foreground/30 pb-1 hover:border-foreground transition-colors duration-300"
         >
-          hello@realsim.bot
+          hello@sim2real.bot
           <span>→</span>
         </a>
       </div>

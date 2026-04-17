@@ -9,7 +9,7 @@ const PageNav = () => (
       Sim2Real
     </Link>
     <a
-      href="mailto:hello@realsim.bot"
+      href="mailto:hello@sim2real.bot"
       className="text-xs font-heading tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
     >
       Contact
