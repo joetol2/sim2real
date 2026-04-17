@@ -5,7 +5,9 @@ import { useLoader } from "@react-three/fiber";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 import { MeshStandardMaterial } from "three";
 
-function StlModel({ url, scale }: { url: string; scale: number }) {
+type Vec3 = [number, number, number];
+
+function StlModel({ url, scale, position, rotation }: { url: string; scale: number; position: Vec3; rotation: Vec3 }) {
   const geometry = useLoader(STLLoader, url);
   const material = new MeshStandardMaterial({
     color: "#2563eb",
@@ -18,18 +20,18 @@ function StlModel({ url, scale }: { url: string; scale: number }) {
       geometry={geometry}
       material={material}
       scale={scale}
-      position={[0, 0.5, 0]}
-      rotation={[-Math.PI / 2, 0, 0]}
+      position={position}
+      rotation={rotation}
     />
   );
 }
 
-function GltfModel({ url, scale }: { url: string; scale: number }) {
+function GltfModel({ url, scale, position, rotation }: { url: string; scale: number; position: Vec3; rotation: Vec3 }) {
   const { scene } = useGLTF(url);
 
   scene.scale.set(scale, scale, scale);
-  scene.position.set(0, 0.5, 0);
-  scene.rotation.set(-Math.PI / 2, 0, 0);
+  scene.position.set(...position);
+  scene.rotation.set(...rotation);
 
   scene.traverse((child: any) => {
     if (child.isMesh) {
@@ -42,18 +44,20 @@ function GltfModel({ url, scale }: { url: string; scale: number }) {
   return <primitive object={scene} />;
 }
 
-function Model({ url, scale }: { url: string; scale: number }) {
+function Model({ url, scale, position, rotation }: { url: string; scale: number; position: Vec3; rotation: Vec3 }) {
   const ext = url.split(".").pop()?.toLowerCase();
-  return ext === "stl" ? <StlModel url={url} scale={scale} /> : <GltfModel url={url} scale={scale} />;
+  return ext === "stl"
+    ? <StlModel url={url} scale={scale} position={position} rotation={rotation} />
+    : <GltfModel url={url} scale={scale} position={position} rotation={rotation} />;
 }
 
-function Scene({ modelUrl, scale }: { modelUrl: string; scale: number }) {
+function Scene({ modelUrl, scale, position, rotation }: { modelUrl: string; scale: number; position: Vec3; rotation: Vec3 }) {
   return (
     <>
       <ambientLight intensity={0.4} />
       <directionalLight position={[5, 8, 5]} intensity={4} castShadow />
       <Suspense fallback={null}>
-        <Model url={modelUrl} scale={scale} />
+        <Model url={modelUrl} scale={scale} position={position} rotation={rotation} />
       </Suspense>
       <Grid
         position={[0, 0, 0]}
@@ -73,7 +77,7 @@ function Scene({ modelUrl, scale }: { modelUrl: string; scale: number }) {
   );
 }
 
-function ViewerCell({ modelUrl, label, scale }: { modelUrl: string; label: string; scale: number }) {
+function ViewerCell({ modelUrl, label, scale, position, rotation }: { modelUrl: string; label: string; scale: number; position: Vec3; rotation: Vec3 }) {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
@@ -88,7 +92,7 @@ function ViewerCell({ modelUrl, label, scale }: { modelUrl: string; label: strin
           style={{ background: "rgb(10, 16, 30)" }}
         >
           <fog attach="fog" args={["#0a101e", 25, 50]} />
-          <Scene modelUrl={modelUrl} scale={scale} />
+          <Scene modelUrl={modelUrl} scale={scale} position={position} rotation={rotation} />
           <OrbitControls
             enableZoom={true}
             zoomSpeed={0.5}
@@ -114,11 +118,13 @@ function ViewerCell({ modelUrl, label, scale }: { modelUrl: string; label: strin
 }
 
 const BASE = import.meta.env.BASE_URL;
+const STL_ROT: Vec3 = [-Math.PI / 2, 0, 0];
+const NO_ROT: Vec3  = [0, 0, 0];
 
 const models = [
-  { url: `${BASE}models/tycho_decimated.stl`, label: "Tycho", scale: 0.008 },
-  { url: `${BASE}models/tycho.gltf`, label: "Tycho (glTF)", scale: 0.04 },
-  { url: `${BASE}models/rolli_assembly_05.stl`, label: "Rolli", scale: 0.008 },
+  { url: `${BASE}models/tycho_decimated.stl`, label: "Tycho",       scale: 0.008, position: [0, 0.5, 0] as Vec3, rotation: STL_ROT },
+  { url: `${BASE}models/tycho.gltf`,          label: "Tycho (glTF)", scale: 0.04,  position: [0, 0,   0] as Vec3, rotation: NO_ROT  },
+  { url: `${BASE}models/rolli_assembly_05.stl`, label: "Rolli",     scale: 0.008, position: [0, 0.5, 0] as Vec3, rotation: STL_ROT },
 ];
 
 export default function RobotViewer() {
@@ -133,7 +139,7 @@ export default function RobotViewer() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {models.map((m) => (
-            <ViewerCell key={m.label} modelUrl={m.url} label={m.label} scale={m.scale} />
+            <ViewerCell key={m.label} modelUrl={m.url} label={m.label} scale={m.scale} position={m.position} rotation={m.rotation} />
           ))}
         </div>
         <p className="text-sm text-muted-foreground mt-4">
