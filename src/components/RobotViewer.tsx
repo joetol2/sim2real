@@ -122,9 +122,9 @@ const STL_ROT: Vec3 = [-Math.PI / 2, 0, 0];
 const NO_ROT: Vec3  = [0, 0, 0];
 
 const models = [
-  { url: `${BASE}models/tycho_decimated.stl`, label: "Tycho",       scale: 0.008, position: [0, 0.5, 0] as Vec3, rotation: STL_ROT },
-  { url: `${BASE}models/tycho.gltf`,          label: "MyCobot 280",  scale: 0.04,  position: [0, 3,   0] as Vec3, rotation: NO_ROT  },
-  { url: `${BASE}models/rolli_assembly_05.stl`, label: "Rolli",     scale: 0.008, position: [0, 0.5, 0] as Vec3, rotation: STL_ROT },
+  { url: `${BASE}models/tycho_decimated.stl`, label: "Tycho",      scale: 0.008, position: [0, 0.5, 0] as Vec3, rotation: STL_ROT },
+  { url: `${BASE}models/tycho.gltf`,          label: "MyCobot 280", scale: 0.025, position: [0, 5,   0] as Vec3, rotation: NO_ROT  },
+  { url: `${BASE}models/rolli_assembly_05.stl`, label: "Rolli",    scale: 0.008, position: [0, 0.5, 0] as Vec3, rotation: STL_ROT },
 ];
 
 export default function RobotViewer() {
