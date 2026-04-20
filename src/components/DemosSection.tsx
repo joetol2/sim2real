@@ -68,13 +68,13 @@ export default function DemosSection() {
       <DemoCard
         eyebrow="Demo 01"
         title="Precision Pick-and-Place"
-        description="The MyCobot 280 demonstrates repeatable targeting accuracy on a constrained pick-and-place task. Policies trained in simulation are deployed directly to hardware — testing how well learned behaviors generalize to real-world conditions."
+        description="The MyCobot 280 demonstrates repeatable targeting accuracy on a constrained pick-and-place task. Policies trained in simulation are deployed directly to hardware, testing how well learned behaviors generalize to real-world conditions."
         video={pitInCupVideo}
       />
       <DemoCard
         eyebrow="Demo 02"
         title="Soft Goods Manipulation"
-        description="Deformable objects like fabric expose the limits of rigid-body simulation assumptions. This MyCobot 280 demo probes learned grasping strategies applied to textile handling — a category where the gap between simulation and reality runs deep."
+        description="Deformable objects like fabric expose the limits of rigid-body simulation assumptions. This MyCobot 280 demo probes learned grasping strategies applied to textile handling, a category where the gap between simulation and reality runs deep."
         video={socksVideo}
         reversed
       />
