@@ -69,7 +69,7 @@ const Footer = () => {
             to="/models"
             className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
           >
-            Models
+            3D Models
           </Link>
           <Link
             to="/press"
