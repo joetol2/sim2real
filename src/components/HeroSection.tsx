@@ -35,7 +35,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <p className="animate-fade-up-delay-2 text-lg sm:text-xl text-text-body leading-relaxed max-w-xl mx-auto">
+          <p className="animate-fade-up-delay-2 text-lg sm:text-xl text-text-body leading-relaxed max-w-2xl mx-auto">
             Sim2Real is focused on the gap between simulated training and
             real-world robot behavior. We&#39;re not ready to say more yet.
           </p>
