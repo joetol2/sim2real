@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -35,56 +36,106 @@ const Discord = () => (
   </svg>
 );
 
+const navLinks = [
+  { to: "/demos", label: "Demos" },
+  { to: "/physics", label: "Physics" },
+  { to: "/models", label: "3D Models" },
+  { to: "/press", label: "Press" },
+];
+
 const Footer = () => {
   const { ref, isVisible } = useScrollReveal();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <footer className="py-8 border-t border-border">
+    <footer className="border-t border-border">
       <div
         ref={ref}
-        className={`max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 flex items-center justify-between transition-all duration-700 ease-out ${
+        className={`max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 transition-all duration-700 ease-out ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <Link
-          to="/"
-          className="text-sm font-heading tracking-[0.25em] uppercase text-foreground font-semibold hover:opacity-70 transition-opacity"
-        >
-          Sim2Real
-        </Link>
-        <nav className="flex items-center gap-6">
+        {/* Desktop layout */}
+        <div className="hidden md:flex items-center justify-between py-8">
           <Link
-            to="/demos"
-            className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+            to="/"
+            className="text-sm font-heading tracking-[0.25em] uppercase text-foreground font-semibold hover:opacity-70 transition-opacity"
           >
-            Demos
+            Sim2Real
           </Link>
-          <Link
-            to="/physics"
-            className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
-          >
-            Physics
-          </Link>
-          <Link
-            to="/models"
-            className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
-          >
-            3D Models
-          </Link>
-          <Link
-            to="/press"
-            className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
-          >
-            Press
-          </Link>
-        </nav>
-        <div className="flex items-center gap-4">
-          <a href="#" aria-label="Instagram"><Instagram /></a>
-          <a href="#" aria-label="X"><XTwitter /></a>
-          <a href="#" aria-label="YouTube"><YouTube /></a>
-          <a href="#" aria-label="Substack"><Substack /></a>
-          <a href="#" aria-label="Discord"><Discord /></a>
-          <span className="text-xs text-muted-foreground ml-2">© 2026</span>
+          <nav className="flex items-center gap-6">
+            {navLinks.map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex items-center gap-4">
+            <a href="#" aria-label="Instagram"><Instagram /></a>
+            <a href="#" aria-label="X"><XTwitter /></a>
+            <a href="#" aria-label="YouTube"><YouTube /></a>
+            <a href="#" aria-label="Substack"><Substack /></a>
+            <a href="#" aria-label="Discord"><Discord /></a>
+            <span className="text-xs text-muted-foreground ml-2">© 2026</span>
+          </div>
+        </div>
+
+        {/* Mobile layout */}
+        <div className="md:hidden">
+          <div className="flex items-center justify-between py-6">
+            <Link
+              to="/"
+              className="text-sm font-heading tracking-[0.25em] uppercase text-foreground font-semibold hover:opacity-70 transition-opacity"
+            >
+              Sim2Real
+            </Link>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-foreground hover:opacity-70 transition-opacity p-1"
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? (
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <line x1="4" y1="4" x2="16" y2="16"/>
+                  <line x1="16" y1="4" x2="4" y2="16"/>
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <line x1="3" y1="6" x2="17" y2="6"/>
+                  <line x1="3" y1="10" x2="17" y2="10"/>
+                  <line x1="3" y1="14" x2="17" y2="14"/>
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {menuOpen && (
+            <nav className="flex flex-col gap-4 pb-6">
+              {navLinks.map(({ to, label }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          )}
+
+          <div className="flex items-center gap-4 pb-6">
+            <a href="#" aria-label="Instagram"><Instagram /></a>
+            <a href="#" aria-label="X"><XTwitter /></a>
+            <a href="#" aria-label="YouTube"><YouTube /></a>
+            <a href="#" aria-label="Substack"><Substack /></a>
+            <a href="#" aria-label="Discord"><Discord /></a>
+            <span className="text-xs text-muted-foreground ml-2">© 2026</span>
+          </div>
         </div>
       </div>
     </footer>
