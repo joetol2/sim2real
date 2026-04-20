@@ -36,6 +36,16 @@ const Discord = () => (
   </svg>
 );
 
+const SocialIcons = () => (
+  <div className="flex items-center gap-4">
+    <a href="#" aria-label="Instagram"><Instagram /></a>
+    <a href="#" aria-label="X"><XTwitter /></a>
+    <a href="#" aria-label="YouTube"><YouTube /></a>
+    <a href="#" aria-label="Substack"><Substack /></a>
+    <a href="#" aria-label="Discord"><Discord /></a>
+  </div>
+);
+
 const navLinks = [
   { to: "/demos", label: "Demos" },
   { to: "/physics", label: "Physics" },
@@ -55,7 +65,7 @@ const Footer = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        {/* Desktop layout */}
+        {/* Desktop */}
         <div className="hidden md:flex items-center justify-between py-8">
           <Link
             to="/"
@@ -74,17 +84,10 @@ const Footer = () => {
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-4">
-            <a href="#" aria-label="Instagram"><Instagram /></a>
-            <a href="#" aria-label="X"><XTwitter /></a>
-            <a href="#" aria-label="YouTube"><YouTube /></a>
-            <a href="#" aria-label="Substack"><Substack /></a>
-            <a href="#" aria-label="Discord"><Discord /></a>
-            <span className="text-xs text-muted-foreground ml-2">© 2026</span>
-          </div>
+          <SocialIcons />
         </div>
 
-        {/* Mobile layout */}
+        {/* Mobile — single row: logo | hamburger | icons */}
         <div className="md:hidden">
           <div className="flex items-center justify-between py-6">
             <Link
@@ -111,6 +114,7 @@ const Footer = () => {
                 </svg>
               )}
             </button>
+            <SocialIcons />
           </div>
 
           {menuOpen && (
@@ -127,15 +131,6 @@ const Footer = () => {
               ))}
             </nav>
           )}
-
-          <div className="flex items-center gap-4 pb-6">
-            <a href="#" aria-label="Instagram"><Instagram /></a>
-            <a href="#" aria-label="X"><XTwitter /></a>
-            <a href="#" aria-label="YouTube"><YouTube /></a>
-            <a href="#" aria-label="Substack"><Substack /></a>
-            <a href="#" aria-label="Discord"><Discord /></a>
-            <span className="text-xs text-muted-foreground ml-2">© 2026</span>
-          </div>
         </div>
       </div>
     </footer>
