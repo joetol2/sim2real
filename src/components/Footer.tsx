@@ -48,7 +48,7 @@ const Footer = () => {
       >
         <Link
           to="/"
-          className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+          className="text-sm font-heading tracking-[0.25em] uppercase text-foreground font-semibold hover:opacity-70 transition-opacity"
         >
           Sim2Real
         </Link>
