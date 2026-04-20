@@ -1,11 +1,11 @@
 import PageNav from "@/components/PageNav";
-import VideoShowcase from "@/components/VideoShowcase";
+import DemosSection from "@/components/DemosSection";
 import Footer from "@/components/Footer";
 
 const Demos = () => (
   <main className="min-h-screen">
     <PageNav />
-    <VideoShowcase />
+    <DemosSection />
     <Footer />
   </main>
 );
