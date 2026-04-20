@@ -10,11 +10,8 @@ const HeroSection = () => {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-50"
       />
-
-      {/* Dark overlay so text stays readable */}
-      <div className="absolute inset-0 bg-black/50" />
 
       {/* Nav */}
       <nav className="relative z-10 flex items-center justify-between px-8 sm:px-12 lg:px-20 pt-8 pb-4">
