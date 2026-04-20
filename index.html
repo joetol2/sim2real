@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sim2Real</title>
+    <meta name="description" content="Simulate the real. Realize the sim! - Sim2Real is the missing link that makes robots work in the real world—turning training in simulation into reliable deployment. Currently in stealth.">
+    <meta name="author" content="Sim2Real" />
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/opengraph-image-p98pqg.png">
+    <meta property="og:title" content="Sim2Real">
+  <meta name="twitter:title" content="Sim2Real">
+  <meta property="og:description" content="Simulate the real. Realize the sim! - Sim2Real is the missing link that makes robots work in the real world—turning training in simulation into reliable deployment. Currently in stealth.">
+  <meta name="twitter:description" content="Simulate the real. Realize the sim! - Sim2Real is the missing link that makes robots work in the real world—turning training in simulation into reliable deployment. Currently in stealth.">
+  <meta name="twitter:image" content="/opengraph-image-p98pqg.png">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+
+  <body>
+    <div id="root"></div>
+    <script>
+      // Decode the path redirect from 404.html back into the real URL.
+      (function(l) {
+        if (l.search[1] === 'p') {
+          var params = l.search.slice(1).split('&').reduce(function(p, s) {
+            var r = s.split('=');
+            p[r[0]] = r.slice(1).join('=').replace(/~and~/g, '&');
+            return p;
+          }, {});
+          window.history.replaceState(
+            null, null,
+            l.pathname + (params.p ? '/' + params.p : '') +
+            (params.q ? '?' + params.q : '') +
+            l.hash
+          );
+        }
+      }(window.location));
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

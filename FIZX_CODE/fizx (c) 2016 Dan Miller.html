@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0028)https://busyboxes.org/fizx2/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>fizx (c) 2016 Dan Miller</title>
+  <script src="./fizx (c) 2016 Dan Miller_files/fizx.js"></script>
+  <script src="./fizx (c) 2016 Dan Miller_files/audioo.js"></script>
+  <script src="./fizx (c) 2016 Dan Miller_files/ball16.js"></script>
+  <script src="./fizx (c) 2016 Dan Miller_files/ball23.js"></script>
+  <script src="./fizx (c) 2016 Dan Miller_files/test.js"></script>
+  <script src="./fizx (c) 2016 Dan Miller_files/delaunay.js"></script>
+  <script src="./fizx (c) 2016 Dan Miller_files/display_canvas.js"></script>
+<script>
+  //var mouse={x:0,y:0,d:false};
+</script></head>
+
+
+<body style="background-color: #ccc; padding:0px;margin:0px" onload="first_run()" onmousedown="nmouse.d=true" onmouseup="nmouse.d=false" onmouseexit="nmouse.d=false" onmousemove="nmouse.x=event.clientX-g_canvas.getBoundingClientRect().left;nmouse.y=950-event.clientY+g_canvas.getBoundingClientRect().top">
+  <div style="position:absolute; left:500px; z-index:9999">
+    Also try <a href="https://busyboxes.org/fizx">this</a> and <a href="https://busyboxes.org/">this</a><br>
+  </div>
+  <canvas id="canvas" width="1300" height="950" style="background-color: #ccc;margin:0px"></canvas>
+
+<script>
+  g_canvas = document.getElementById("canvas");
+  g_context = g_canvas.getContext("2d");
+  console.log("canvas context:", g_context);
+  var WIDTH = g_canvas.width;
+  var HEIGHT = g_canvas.height;
+  alert("FIZX: a whole new way to do physics.\nMobile objects can be dragged around!");
+</script>
+
+</body></html>
