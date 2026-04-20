@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,41 +7,28 @@
 @layer base {
   :root {
     --background: 212 70% 18%;
-    --foreground: 0 0% 100%;
-
-    --card: 212 65% 22%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 212 65% 16%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 0 0% 100%;
-    --primary-foreground: 212 70% 18%;
-
-    --secondary: 212 50% 28%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 212 50% 25%;
-    --muted-foreground: 0 0% 100%;
-
-    --accent: 0 0% 100%;
-    --accent-foreground: 212 70% 18%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 100%;
-    --input: 212 40% 32%;
-    --ring: 0 0% 100%;
-
+    --foreground: 210 40% 96%;
+    --card: 212 60% 14%;
+    --card-foreground: 210 40% 96%;
+    --popover: 212 60% 14%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 212 50% 22%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 212 50% 22%;
+    --muted-foreground: 210 20% 65%;
+    --accent: 212 50% 22%;
+    --accent-foreground: 210 40% 96%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 212 30% 30%;
+    --input: 212 30% 30%;
+    --ring: 210 100% 60%;
     --radius: 0.5rem;
-
-    --text-secondary: 0 0% 100%;
-    --text-body: 0 0% 100%;
+    --text-body: 210 30% 80%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -76,11 +63,13 @@ hr {
 }
 
 /* Section dividers — replace solid border-t with gradient pseudo-element */
-section.border-t {
+section.border-t,
+footer.border-t {
   border-top: none;
   position: relative;
 }
-section.border-t::before {
+section.border-t::before,
+footer.border-t::before {
   content: '';
   position: absolute;
   top: 0;
