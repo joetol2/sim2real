@@ -122,12 +122,17 @@ const SimulationSection = () => {
             onMouseUp={() => { const w = window as any; if (w.nmouse) w.nmouse.d = false; }}
           />
         </div>
-        <p className="text-sm text-muted-foreground mt-4">
-          Drag objects to interact.{" "}
-
-            Simulation by Dan Miller.
-
-        </p>
+        <div className="flex items-center justify-between mt-4">
+          <p className="text-sm text-muted-foreground">
+            Drag objects to interact. Simulation by Dan Miller.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 ml-4 shrink-0"
+          >
+            Reset
+          </button>
+        </div>
       </div>
     </section>
   );
