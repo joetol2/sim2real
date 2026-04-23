@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CANVAS_W = 1300;
 const CANVAS_H = 950;
 
 const loadedScripts = new Set<string>();
 
-const SimulationSection = () => {
+function SimCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scaleRef = useRef(1);
@@ -13,7 +13,6 @@ const SimulationSection = () => {
   useEffect(() => {
     const w = window as any;
 
-    // Reset global sim state so remounts start clean
     w.ATOMS = [];
     w.BONDS = [];
     w.THINGS = [];
@@ -21,11 +20,9 @@ const SimulationSection = () => {
     w.COLLIDES = [];
     w.LAYER_FILTERS = [["DEFAULT", "DEFAULT"]];
 
-    // Suppress the startup alert from the original sim
     const origAlert = window.alert;
     window.alert = () => {};
 
-    // Track intervals created by the sim so we can stop them on unmount
     const origSetInterval = window.setInterval;
     const intervalIds: number[] = [];
     (window as any).setInterval = function (fn: TimerHandler, delay?: number, ...args: unknown[]) {
@@ -62,7 +59,6 @@ const SimulationSection = () => {
       if (typeof w.first_run === "function") w.first_run();
     })();
 
-    // Scale canvas to fit container width using CSS transform
     const updateScale = () => {
       if (!containerRef.current || !canvasRef.current) return;
       const scale = containerRef.current.clientWidth / CANVAS_W;
@@ -99,6 +95,28 @@ const SimulationSection = () => {
   };
 
   return (
+    <div
+      ref={containerRef}
+      style={{ width: "100%", overflow: "hidden", position: "relative" }}
+    >
+      <canvas
+        ref={canvasRef}
+        id="canvas"
+        width={CANVAS_W}
+        height={CANVAS_H}
+        style={{ transformOrigin: "top left", display: "block" }}
+        onMouseMove={handleMouseMove}
+        onMouseDown={() => { const w = window as any; if (w.nmouse) w.nmouse.d = true; }}
+        onMouseUp={() => { const w = window as any; if (w.nmouse) w.nmouse.d = false; }}
+      />
+    </div>
+  );
+}
+
+const SimulationSection = () => {
+  const [resetKey, setResetKey] = useState(0);
+
+  return (
     <section className="py-24 sm:py-32 border-t border-border">
       <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
         <p className="text-base font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">
@@ -107,27 +125,13 @@ const SimulationSection = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold tracking-tight leading-[1.15] mb-10">
           Soft-body dynamics in the browser.
         </h2>
-        <div
-          ref={containerRef}
-          style={{ width: "100%", overflow: "hidden", position: "relative" }}
-        >
-          <canvas
-            ref={canvasRef}
-            id="canvas"
-            width={CANVAS_W}
-            height={CANVAS_H}
-            style={{ transformOrigin: "top left", display: "block" }}
-            onMouseMove={handleMouseMove}
-            onMouseDown={() => { const w = window as any; if (w.nmouse) w.nmouse.d = true; }}
-            onMouseUp={() => { const w = window as any; if (w.nmouse) w.nmouse.d = false; }}
-          />
-        </div>
+        <SimCanvas key={resetKey} />
         <div className="flex items-center justify-between mt-4">
           <p className="text-sm text-muted-foreground">
             Drag objects to interact. Simulation by Dan Miller.
           </p>
           <button
-            onClick={() => window.location.reload()}
+            onClick={() => setResetKey(k => k + 1)}
             className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 ml-4 shrink-0"
           >
             Reset
