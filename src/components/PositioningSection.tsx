@@ -7,7 +7,7 @@ const PositioningSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
-    <section className="py-24 sm:py-32 border-t border-border" style={{ backgroundColor: '#012b62' }}>
+    <section className="py-16 sm:py-20 border-t border-border" style={{ backgroundColor: '#012b62' }}>
       <div
         ref={ref}
         className={`max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 transition-all duration-700 ease-out ${
