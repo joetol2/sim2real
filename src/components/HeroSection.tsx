@@ -2,7 +2,7 @@ import heroVideo from "@/assets/videos/Multi-Shot.mp4";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[50vh] flex flex-col overflow-hidden">
+    <section className="relative min-h-[70vh] flex flex-col overflow-hidden">
       {/* Video background */}
       <video
         src={heroVideo}
