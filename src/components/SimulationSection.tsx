@@ -128,7 +128,7 @@ const SimulationSection = () => {
         <SimCanvas key={resetKey} />
         <div className="flex items-center justify-between mt-4">
           <p className="text-sm text-muted-foreground">
-            Drag objects to interact. Simulation by Dan Miller.
+            Drag objects to interact.
           </p>
           <button
             onClick={() => setResetKey(k => k + 1)}
