@@ -1,5 +1,3 @@
-# Sim2Real
+# Sim2Real v2
 
-Website for Sim2Real — bridging the gap between simulation and real-world robot deployment.
-
-Built with React, TypeScript, Vite, and Tailwind CSS. Deployed via GitHub Pages to [sim2real.bot](https://sim2real.bot).
+Preview site for sim2real.bot v2 — deployed to https://joetol2.github.io/sim2real-v2/
