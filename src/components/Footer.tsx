@@ -47,10 +47,10 @@ const SocialIcons = () => (
 );
 
 const navLinks = [
-  { to: "/demos", label: "Demos" },
-  { to: "/physics", label: "Physics" },
-  { to: "/models", label: "3D Models" },
-  { to: "/press", label: "Press" },
+  { to: "/product", label: "Product" },
+  { to: "/use-cases", label: "Use Cases" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
 ];
 
 const Footer = () => {
