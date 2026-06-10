@@ -44,12 +44,12 @@ const Contact = () => {
           }`}
         >
           <h1 className="text-4xl sm:text-5xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
-            Let's talk about your deployment bottleneck
+            Let&#39;s talk about your deployment bottleneck
           </h1>
           <p className="text-base text-white/70 leading-relaxed mb-4">
-            If your team is using simulation but still spending too much time on hardware trial and error, we'd like to hear what you are working on.
+            If your team is using simulation but still spending too much time on hardware trial and error, we&#39;d like to hear what you are working on.
           </p>
-          <p className="text-sm text-white/50 leading-relaxed mb-12">Reach out if you are:</p>
+          <p className="text-sm text-white/50 leading-relaxed mt-8 mb-3">Reach out if you are:</p>
           <ul className="space-y-3 text-sm text-white/60 leading-relaxed mb-12">
             {[
               "Training robot control policies in simulation",
@@ -65,7 +65,7 @@ const Contact = () => {
           </ul>
 
           {submitted ? (
-            <p className="text-base text-white/80">Thanks — your message is on its way. We'll be in touch.</p>
+            <p className="text-base text-white/80">Thanks — your message is on its way. We&#39;ll be in touch.</p>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -88,7 +88,7 @@ const Contact = () => {
               </div>
               <div>
                 <label className="block text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground mb-2">Where is the current bottleneck?</label>
-                <textarea name="bottleneck" rows={4} placeholder="Describe the challenge you're running into…" className={`${inputClass} resize-none`} />
+                <textarea name="bottleneck" rows={4} placeholder="Describe the challenge you&#39;re running into…" className={`${inputClass} resize-none`} />
               </div>
               <div>
                 <label className="block text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground mb-2">Website or project link</label>
