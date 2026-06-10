@@ -13,6 +13,7 @@ import Physics from "./pages/Physics.tsx";
 import Models from "./pages/Models.tsx";
 import Press from "./pages/Press.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter basename="/sim2real-v2">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/product" element={<Product />} />
