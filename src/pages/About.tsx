@@ -48,7 +48,7 @@ const About = () => (
     <section className="py-20 sm:py-28 px-8 sm:px-12 lg:px-20">
       <div className="max-w-3xl">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
-          We are focused on one of robotics' hardest transitions
+          We are focused on one of robotics&#39; hardest transitions
         </h1>
         <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
           Sim2Real exists to help robotics teams close the gap between simulated training and real-world deployment.
@@ -60,12 +60,12 @@ const About = () => (
     <Section dark>
       <div className="max-w-2xl">
         <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Why the company exists</p>
-        <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">Why the company exists</h2>
+        <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">The gap we are building around</h2>
         <p className="text-base text-white/70 leading-relaxed mb-4">
           Simulation is already central to modern robotics development. What is still missing is a dependable way to turn simulated work into real-world performance without leaning so heavily on human demonstrations or repeated hardware trial and error.
         </p>
         <p className="text-base text-white/70 leading-relaxed">
-          Sim2Real is being built around that problem. The company's core idea is that better deployment outcomes come from a better training and evaluation workflow, not just from a better simulator.
+          Sim2Real is being built around that problem. The company&#39;s core idea is that better deployment outcomes come from a better training and evaluation workflow, not just from a better simulator.
         </p>
       </div>
     </Section>
@@ -73,7 +73,7 @@ const About = () => (
     {/* Section 2 */}
     <Section>
       <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">What we believe</p>
-      <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-8">What we believe</h2>
+      <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-8">Three things we keep coming back to</h2>
       <ul className="space-y-4 text-base text-white/70 leading-relaxed">
         {[
           "Simulation should do more of the heavy lifting before a policy reaches real hardware.",
@@ -91,7 +91,7 @@ const About = () => (
     {/* Team */}
     <Section dark>
       <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Team</p>
-      <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-10">Team</h2>
+      <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-10">The people behind the work</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
         {team.map(({ name, role, bio }) => (
           <div key={name} className="border border-white/10 rounded-lg p-6">
@@ -107,7 +107,7 @@ const About = () => (
     <Section>
       <div className="max-w-2xl">
         <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Where we are headed</p>
-        <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">Where we are headed</h2>
+        <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">What comes next</h2>
         <p className="text-base text-white/70 leading-relaxed mb-10">
           We are interested in how learned world models and reality-grounded simulation can further improve transfer. Our focus is helping robotics teams get more out of simulation today.
         </p>
