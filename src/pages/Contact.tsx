@@ -3,16 +3,29 @@ import PageNav from "@/components/PageNav";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const Contact = () => {
+function Section({ children }: { children: React.ReactNode }) {
   const { ref, isVisible } = useScrollReveal();
+  return (
+    <section className="py-20 sm:py-28 border-t border-border">
+      <div
+        ref={ref}
+        className={`max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 transition-all duration-700 ease-out ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
+        {children}
+      </div>
+    </section>
+  );
+}
+
+const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const params = new URLSearchParams();
-    data.forEach((value, key) => params.append(key, value.toString()));
 
     const mailto = `mailto:hello@sim2real.bot?subject=Sim2Real inquiry from ${data.get("company") || data.get("name")}&body=${encodeURIComponent(
       [
@@ -36,21 +49,24 @@ const Contact = () => {
     <main className="min-h-screen">
       <PageNav />
 
+      {/* Hero */}
       <section className="py-20 sm:py-28 px-8 sm:px-12 lg:px-20">
-        <div
-          ref={ref}
-          className={`max-w-2xl transition-all duration-700 ease-out ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
-          <h1 className="text-4xl sm:text-5xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
+        <div className="max-w-4xl">
+          <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Get in touch</p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
             Let&#39;s talk about your deployment bottleneck
           </h1>
-          <p className="text-base text-white/70 leading-relaxed mb-4">
+          <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
             If your team is using simulation but still spending too much time on hardware trial and error, we&#39;d like to hear what you are working on.
           </p>
-          <p className="text-sm text-white/50 leading-relaxed mt-8 mb-3">Reach out if you are:</p>
-          <ul className="space-y-3 text-sm text-white/60 leading-relaxed mb-12">
+        </div>
+      </section>
+
+      {/* Form section */}
+      <Section>
+        <div className="max-w-4xl">
+          <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Reach out if you are</p>
+          <ul className="space-y-3 text-base text-white/70 leading-relaxed mb-12">
             {[
               "Training robot control policies in simulation",
               "Struggling with sim-to-real transfer",
@@ -58,7 +74,7 @@ const Contact = () => {
               "Exploring a more scalable path to synthetic training data",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/30 shrink-0" />
+                <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
                 {item}
               </li>
             ))}
@@ -103,7 +119,7 @@ const Contact = () => {
             </form>
           )}
         </div>
-      </section>
+      </Section>
 
       <Footer />
     </main>
