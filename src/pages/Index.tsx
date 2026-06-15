@@ -99,7 +99,7 @@ const Index = () => {
 
       {/* Section 3 */}
       <Section>
-        <div className="max-w-5xl">
+        <div className="max-w-4xl">
           <Label>The differentiator</Label>
           <Heading>No humans in the loop</Heading>
           <Body>
