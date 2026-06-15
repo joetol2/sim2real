@@ -200,31 +200,43 @@ const Product = () => (
       <p className="text-base text-white/70 leading-relaxed mb-10">
         Sim2Real is not a physics engine. It is the methodology and tooling built on top of whatever simulator your team already uses.
       </p>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm text-left border-collapse">
-          <thead>
-            <tr className="border-b border-white/10">
-              <th className="py-3 pr-6 text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground font-normal w-1/3"></th>
-              <th className="py-3 pr-6 text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground font-normal">Simulators (Isaac, MuJoCo...)</th>
-              <th className="py-3 text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground font-normal">Sim2Real</th>
-            </tr>
-          </thead>
-          <tbody className="text-white/70">
-            {[
-              { label: "What it is", sim: "Physics engine", s2r: "Training method + tooling on top of any sim" },
-              { label: "What is delivered", sim: "Simulation software", s2r: "Working robot policies" },
-              { label: "Data pipeline", sim: "Human demos: teleoperation, mocap", s2r: "Scripted solver, unlimited synthetic data, no human" },
-              { label: "Deployment test", sim: "Try every policy on hardware", s2r: "Filter policies before hardware touches them" },
-              { label: "Relationship", sim: "Infrastructure", s2r: "Built on top. Sims are the engine." },
-            ].map(({ label, sim, s2r }) => (
-              <tr key={label} className="border-b border-white/5">
-                <td className="py-4 pr-6 text-xs font-heading tracking-[0.15em] uppercase text-muted-foreground">{label}</td>
-                <td className="py-4 pr-6">{sim}</td>
-                <td className="py-4 text-white/90 font-medium">{s2r}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {[
+          {
+            label: "What it is",
+            sim: "Physics engine",
+            s2r: "Training method + tooling on top of any sim",
+          },
+          {
+            label: "What is delivered",
+            sim: "Simulation software",
+            s2r: "Working robot policies",
+          },
+          {
+            label: "Data pipeline",
+            sim: "Human demos: teleoperation, mocap",
+            s2r: "Scripted solver, unlimited synthetic data, no human",
+          },
+          {
+            label: "Deployment test",
+            sim: "Try every policy on hardware",
+            s2r: "Filter policies before hardware touches them",
+          },
+        ].map(({ label, sim, s2r }) => (
+          <div key={label} className="border border-white/10 rounded-lg p-6">
+            <p className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground mb-4">{label}</p>
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-heading tracking-[0.15em] uppercase text-white/30 mb-1">Simulators</p>
+                <p className="text-sm text-white/60 leading-relaxed">{sim}</p>
+              </div>
+              <div>
+                <p className="text-xs font-heading tracking-[0.15em] uppercase text-white/50 mb-1">Sim2Real</p>
+                <p className="text-sm text-white/90 font-medium leading-relaxed">{s2r}</p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </Section>
 
