@@ -40,7 +40,7 @@ const Product = () => (
 
     {/* Hero */}
     <section className="py-20 sm:py-28 px-8 sm:px-12 lg:px-20">
-      <div className="max-w-6xl">
+      <div className="max-w-4xl">
         <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">We make your robots work</p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
           A training and deployment workflow for real-world robot readiness
@@ -53,14 +53,16 @@ const Product = () => (
 
     {/* Section 1 */}
     <Section dark>
-      <Label>What the product is</Label>
-      <Heading>Methodology and tooling for the sim-to-real gap</Heading>
-      <p className="text-base text-white/70 leading-relaxed mb-4">
-        Sim2Real is a methodology and tooling layer for teams developing robot control policies in simulation.
-      </p>
-      <p className="text-base text-white/70 leading-relaxed">
-        It is designed to improve the path from training to transfer by making simulation outputs more relevant to real deployment conditions. Instead of treating simulated success as the goal, Sim2Real is built to make simulated work more useful when the policy leaves the simulator.
-      </p>
+      <div className="max-w-4xl">
+        <Label>What the product is</Label>
+        <Heading>Methodology and tooling for the sim-to-real gap</Heading>
+        <p className="text-base text-white/70 leading-relaxed mb-4">
+          Sim2Real is a methodology and tooling layer for teams developing robot control policies in simulation.
+        </p>
+        <p className="text-base text-white/70 leading-relaxed">
+          It is designed to improve the path from training to transfer by making simulation outputs more relevant to real deployment conditions. Instead of treating simulated success as the goal, Sim2Real is built to make simulated work more useful when the policy leaves the simulator.
+        </p>
+      </div>
     </Section>
 
     {/* Section 2 */}
@@ -163,9 +165,11 @@ const Product = () => (
     <Section dark>
       <Label>Under the hood</Label>
       <Heading>What we have learned about what actually works</Heading>
-      <p className="text-base text-white/70 leading-relaxed mb-10">
-        The method is built on a set of specific technical findings, things that matter in practice and that offline metrics alone will not tell you.
-      </p>
+      <div className="max-w-4xl mb-10">
+        <p className="text-base text-white/70 leading-relaxed">
+          The method is built on a set of specific technical findings, things that matter in practice and that offline metrics alone will not tell you.
+        </p>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {[
           {
@@ -197,9 +201,11 @@ const Product = () => (
     <Section>
       <Label>Positioning</Label>
       <Heading>Built on sims, not against them</Heading>
-      <p className="text-base text-white/70 leading-relaxed mb-10">
-        Sim2Real is not a physics engine. It is the methodology and tooling built on top of whatever simulator your team already uses.
-      </p>
+      <div className="max-w-4xl mb-10">
+        <p className="text-base text-white/70 leading-relaxed">
+          Sim2Real is not a physics engine. It is the methodology and tooling built on top of whatever simulator your team already uses.
+        </p>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {[
           {
@@ -242,17 +248,19 @@ const Product = () => (
 
     {/* CTA */}
     <Section dark>
-      <Label>Get started</Label>
-      <Heading>Interested in applying Sim2Real to your stack?</Heading>
-      <p className="text-base text-white/70 leading-relaxed mb-10">
-        If your team is generating data in simulation but struggling to make it count on real hardware, we should talk.
-      </p>
-      <Link
-        to="/contact"
-        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
-      >
-        Talk about your deployment bottleneck
-      </Link>
+      <div className="max-w-4xl">
+        <Label>Get started</Label>
+        <Heading>Interested in applying Sim2Real to your stack?</Heading>
+        <p className="text-base text-white/70 leading-relaxed mb-10">
+          If your team is generating data in simulation but struggling to make it count on real hardware, we should talk.
+        </p>
+        <Link
+          to="/contact"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
+        >
+          Talk about your deployment bottleneck
+        </Link>
+      </div>
     </Section>
 
     <Footer />

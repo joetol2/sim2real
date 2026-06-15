@@ -51,7 +51,7 @@ const UseCases = () => (
 
     {/* Hero */}
     <section className="py-20 sm:py-28 px-8 sm:px-12 lg:px-20">
-      <div className="max-w-6xl">
+      <div className="max-w-4xl">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
           Where Sim2Real fits
         </h1>
@@ -64,42 +64,48 @@ const UseCases = () => (
     {/* Use cases */}
     {useCases.map(({ label, title, body }, i) => (
       <Section key={label} dark={i % 2 === 1}>
-        <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">{label}</p>
-        <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
-        <p className="text-base text-white/70 leading-relaxed">{body}</p>
+        <div className="max-w-4xl">
+          <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">{label}</p>
+          <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
+          <p className="text-base text-white/70 leading-relaxed">{body}</p>
+        </div>
       </Section>
     ))}
 
     {/* Why teams come to us */}
     <Section dark={useCases.length % 2 === 1}>
-      <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Why teams come to us</p>
-      <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-8">Teams usually reach out when they have one of these problems:</h2>
-      <ul className="space-y-3 text-base text-white/70 leading-relaxed mb-10">
-        {[
-          "Simulated performance looks good, real-world performance does not",
-          "Collecting enough training demonstrations is too slow",
-          "Hardware testing is absorbing too much time and budget",
-          "They need a more scalable path to deployment confidence",
-        ].map((item) => (
-          <li key={item} className="flex items-start gap-3">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div className="max-w-4xl">
+        <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Why teams come to us</p>
+        <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-8">Teams usually reach out when they have one of these problems:</h2>
+        <ul className="space-y-3 text-base text-white/70 leading-relaxed mb-10">
+          {[
+            "Simulated performance looks good, real-world performance does not",
+            "Collecting enough training demonstrations is too slow",
+            "Hardware testing is absorbing too much time and budget",
+            "They need a more scalable path to deployment confidence",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-3">
+              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </Section>
 
     {/* CTA */}
     <Section>
-      <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8">
-        Have a deployment problem that simulation alone is not solving?
-      </p>
-      <Link
-        to="/contact"
-        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
-      >
-        We should talk
-      </Link>
+      <div className="max-w-4xl">
+        <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8">
+          Have a deployment problem that simulation alone is not solving?
+        </p>
+        <Link
+          to="/contact"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
+        >
+          We should talk
+        </Link>
+      </div>
     </Section>
 
     <Footer />

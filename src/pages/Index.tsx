@@ -53,7 +53,7 @@ const Index = () => {
 
       {/* Section 1 */}
       <Section>
-        <div className="max-w-5xl">
+        <div className="max-w-4xl">
           <Label>The problem</Label>
           <Heading>Simulation is not the finish line</Heading>
           <div className="mb-8 p-6 border border-white/10 rounded-lg inline-block">
@@ -74,7 +74,7 @@ const Index = () => {
 
       {/* Section 2 */}
       <Section dark>
-        <div className="max-w-5xl">
+        <div className="max-w-4xl">
           <Label>What Sim2Real does</Label>
           <Heading>We provide the workflow that sits between simulation and deployment.</Heading>
           <p className="text-base text-white/70 leading-relaxed mb-8">Our approach helps teams:</p>
@@ -150,7 +150,7 @@ const Index = () => {
 
       {/* Section 5 */}
       <Section>
-        <div className="max-w-5xl">
+        <div className="max-w-4xl">
           <Label>The bottleneck</Label>
           <Heading>Built for the deployment problem</Heading>
           <p className="text-base text-white/70 leading-relaxed mb-4">Most sim workflows still break down for familiar reasons:</p>
@@ -194,7 +194,7 @@ const Index = () => {
 
       {/* Section 7 */}
       <Section>
-        <div className="max-w-5xl">
+        <div className="max-w-4xl">
           <Label>Infrastructure</Label>
           <Heading>Built on sims, not against them</Heading>
           <Body>
@@ -208,7 +208,7 @@ const Index = () => {
 
       {/* Section 8 */}
       <Section dark>
-        <div className="max-w-5xl">
+        <div className="max-w-4xl">
           <Label>Who this is for</Label>
           <Heading>Anyone who makes robots</Heading>
           <Body>
@@ -222,7 +222,7 @@ const Index = () => {
 
       {/* Final CTA */}
       <Section>
-        <div className="max-w-5xl">
+        <div className="max-w-4xl">
           <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-4">
             If simulation is part of your stack, it should be helping you deploy.
           </p>
