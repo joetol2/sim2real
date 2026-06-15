@@ -26,17 +26,17 @@ const team = [
   {
     name: "Dan Miller",
     role: "CEO/CTO & Co-Founder",
-    bio: "Architect of the training approach and simulation-first workflow described in the pitch materials.",
+    bio: "Architect of the training approach and simulation-first workflow. Designed the method that achieves 100% pick-and-place success with zero human demonstrations.",
   },
   {
     name: "Fabian Friedland",
     role: "CSO & Co-Founder",
-    bio: "Operator, entrepreneur, and machine learning practitioner with prior leadership experience.",
+    bio: "CEO, TychoBot (2023–2025). Led Global Business Development at On2 Technologies, acquired by Google. Operator, entrepreneur, and machine learning practitioner.",
   },
   {
     name: "David Silver",
     role: "COO & Co-Founder",
-    bio: "Company builder and operating executive with prior startup leadership experience.",
+    bio: "Co-Founder & COO, On2 Technologies, acquired by Google. Company builder and operating executive with prior startup leadership experience.",
   },
 ];
 
@@ -65,7 +65,7 @@ const About = () => (
           Simulation is already central to modern robotics development. What is still missing is a dependable way to turn simulated work into real-world performance without leaning so heavily on human demonstrations or repeated hardware trial and error.
         </p>
         <p className="text-base text-white/70 leading-relaxed">
-          Sim2Real is being built around that problem. The company&#39;s core idea is that better deployment outcomes come from a better training and evaluation workflow, not just from a better simulator.
+          Sim2Real is being built around that problem. The company&#39;s core idea is that better deployment outcomes come from a better training and evaluation workflow — not just from a better simulator.
         </p>
       </div>
     </Section>
@@ -77,7 +77,7 @@ const About = () => (
       <ul className="space-y-4 text-base text-white/70 leading-relaxed">
         {[
           "Simulation should do more of the heavy lifting before a policy reaches real hardware.",
-          "Robotics teams need a scalable path to training data generation.",
+          "Robotics teams need a scalable path to training data generation — one that does not depend on human demonstrations.",
           "Deployment confidence should improve before costly physical testing begins.",
         ].map((item) => (
           <li key={item} className="flex items-start gap-3">
@@ -103,13 +103,19 @@ const About = () => (
       </div>
     </Section>
 
-    {/* Section 4 */}
+    {/* Section 4 — The Moonshot */}
     <Section>
       <div className="max-w-2xl">
         <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Where we are headed</p>
         <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">What comes next</h2>
+        <p className="text-base text-white/70 leading-relaxed mb-4">
+          Our immediate focus is helping robotics teams get more out of simulation today — generating better data, training more transferable policies, and shipping working robots faster.
+        </p>
+        <p className="text-base text-white/70 leading-relaxed mb-4">
+          Longer term, we are interested in a more fundamental question: what if the best simulator is no simulator at all?
+        </p>
         <p className="text-base text-white/70 leading-relaxed mb-10">
-          We are interested in how learned world models and reality-grounded simulation can further improve transfer. Our focus is helping robotics teams get more out of simulation today.
+          Every physics engine is an approximation. We are exploring whether a robot can learn its own simulator directly from real-world interaction data — a bespoke sim that closely mirrors reality, driving the sim-to-real gap toward zero. Reality is the most accurate simulator there is. We want to use it as the oracle.
         </p>
         <Link
           to="/contact"
