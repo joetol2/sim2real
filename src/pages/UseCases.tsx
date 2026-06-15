@@ -51,7 +51,7 @@ const UseCases = () => (
 
     {/* Hero */}
     <section className="py-20 sm:py-28 px-8 sm:px-12 lg:px-20">
-      <div className="max-w-3xl">
+      <div className="max-w-6xl">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
           Where Sim2Real fits
         </h1>
@@ -64,11 +64,9 @@ const UseCases = () => (
     {/* Use cases */}
     {useCases.map(({ label, title, body }, i) => (
       <Section key={label} dark={i % 2 === 1}>
-        <div className="max-w-2xl">
-          <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">{label}</p>
-          <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
-          <p className="text-base text-white/70 leading-relaxed">{body}</p>
-        </div>
+        <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">{label}</p>
+        <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
+        <p className="text-base text-white/70 leading-relaxed">{body}</p>
       </Section>
     ))}
 
@@ -93,14 +91,14 @@ const UseCases = () => (
 
     {/* CTA */}
     <Section>
-      <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-2xl">
+      <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8">
         Have a deployment problem that simulation alone is not solving?
       </p>
       <Link
         to="/contact"
         className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
       >
-        We should talk →
+        We should talk
       </Link>
     </Section>
 
