@@ -65,7 +65,7 @@ const Contact = () => {
           </ul>
 
           {submitted ? (
-            <p className="text-base text-white/80">Thanks — your message is on its way. We&#39;ll be in touch.</p>
+            <p className="text-base text-white/80">Thanks, your message is on its way. We&#39;ll be in touch.</p>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -84,11 +84,11 @@ const Contact = () => {
               </div>
               <div>
                 <label className="block text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground mb-2">What kind of robot or task are you working on?</label>
-                <input name="robot" placeholder="e.g. manipulation, locomotion, pick-and-place…" className={inputClass} />
+                <input name="robot" placeholder="e.g. manipulation, locomotion, pick-and-place..." className={inputClass} />
               </div>
               <div>
                 <label className="block text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground mb-2">Where is the current bottleneck?</label>
-                <textarea name="bottleneck" rows={4} placeholder="Describe the challenge you&#39;re running into…" className={`${inputClass} resize-none`} />
+                <textarea name="bottleneck" rows={4} placeholder="Describe the challenge you&#39;re running into..." className={`${inputClass} resize-none`} />
               </div>
               <div>
                 <label className="block text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground mb-2">Website or project link</label>
@@ -98,7 +98,7 @@ const Contact = () => {
                 type="submit"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
               >
-                Start the conversation →
+                Start the conversation
               </button>
             </form>
           )}

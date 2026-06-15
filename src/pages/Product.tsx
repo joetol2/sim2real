@@ -46,12 +46,12 @@ const Product = () => (
           A training and deployment workflow for real-world robot readiness
         </h1>
         <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
-          Sim2Real helps robotics teams use simulation more effectively — from synthetic data generation through policy training and candidate evaluation, before hardware deployment. No human demonstrations required.
+          Sim2Real helps robotics teams use simulation more effectively, from synthetic data generation through policy training and candidate evaluation, before hardware deployment. No human demonstrations required.
         </p>
       </div>
     </section>
 
-    {/* Section 1 — What the product is */}
+    {/* Section 1 */}
     <Section dark>
       <div className="max-w-2xl">
         <Label>What the product is</Label>
@@ -65,10 +65,10 @@ const Product = () => (
       </div>
     </Section>
 
-    {/* Section 2 — The 3-step method */}
+    {/* Section 2 */}
     <Section>
       <Label>The method</Label>
-      <Heading>How it works — no humans in the loop</Heading>
+      <Heading>How it works: no humans in the loop</Heading>
       <p className="text-base text-white/70 leading-relaxed max-w-2xl mb-10">
         Three steps. Unlimited data. Zero human demonstrations.
       </p>
@@ -77,7 +77,7 @@ const Product = () => (
           {
             step: "01",
             title: "Solve with privileged access",
-            body: "A scripted solver or neural net solves the task using full simulator state — information the real robot will never have. This bootstraps the entire process without a single human demonstration.",
+            body: "A scripted solver or neural net solves the task using full simulator state, which the real robot will never have. This bootstraps the entire process without a single human demonstration.",
           },
           {
             step: "02",
@@ -87,7 +87,7 @@ const Product = () => (
           {
             step: "03",
             title: "Train with only real-world signals",
-            body: "The deployed policy is trained using only what a real robot can observe at runtime — camera imagery, joint state, proprioception, force signals. No privileged simulator access. Deploy with confidence.",
+            body: "The deployed policy is trained using only what a real robot can observe at runtime: camera imagery, joint state, proprioception, force signals. No privileged simulator access. Deploy with confidence.",
           },
         ].map(({ step, title, body }) => (
           <div key={step} className="border border-white/10 rounded-lg p-6">
@@ -99,7 +99,7 @@ const Product = () => (
       </div>
     </Section>
 
-    {/* Section 3 — Proven results */}
+    {/* Section 3 */}
     <Section dark>
       <Label>Proven results</Label>
       <Heading>What the method delivers</Heading>
@@ -113,12 +113,12 @@ const Product = () => (
           {
             stat: "4k > 22k",
             title: "Synthetic beats human data",
-            body: "4,000 synthetic episodes outperform 22,000 human demonstrations — 100% vs. 94% task success, confirmed across two independent seeds.",
+            body: "4,000 synthetic episodes outperform 22,000 human demonstrations: 100% vs. 94% task success, confirmed across two independent seeds.",
           },
           {
             stat: "91%",
             title: "Stacking success",
-            body: "Spatial reasoning from a single camera. Color-conditioned sorting, block stacking, dynamic throwing — one task-agnostic recipe.",
+            body: "Spatial reasoning from a single camera. Color-conditioned sorting, block stacking, dynamic throwing. One task-agnostic recipe.",
           },
         ].map(({ stat, title, body }) => (
           <div key={title} className="border border-white/10 rounded-lg p-6">
@@ -130,7 +130,7 @@ const Product = () => (
       </div>
     </Section>
 
-    {/* Section 4 — What it helps teams do */}
+    {/* Section 4 */}
     <Section>
       <Label>Capabilities</Label>
       <Heading>What it helps teams do</Heading>
@@ -142,11 +142,11 @@ const Product = () => (
           },
           {
             title: "Train against the observations a real robot actually has",
-            body: "The training setup uses only robot-available signals — camera imagery, joint measurements, proprioception, and force — while excluding privileged simulator state from the learned policy.",
+            body: "The training setup uses only robot-available signals: camera imagery, joint measurements, proprioception, and force, while excluding privileged simulator state from the learned policy.",
           },
           {
             title: "Improve robustness across variable conditions",
-            body: "Training across broad randomized scenarios produces policies that generalize better under real-world variability — fewer surprises at deployment.",
+            body: "Training across broad randomized scenarios produces policies that generalize better under real-world variability. Fewer surprises at deployment.",
           },
           {
             title: "Reduce wasted hardware testing",
@@ -161,12 +161,12 @@ const Product = () => (
       </div>
     </Section>
 
-    {/* Section 5 — Technical findings */}
+    {/* Section 5 */}
     <Section dark>
       <Label>Under the hood</Label>
       <Heading>What we have learned about what actually works</Heading>
       <p className="text-base text-white/70 leading-relaxed max-w-2xl mb-10">
-        The method is built on a set of specific technical findings — things that matter in practice and that offline metrics alone will not tell you.
+        The method is built on a set of specific technical findings, things that matter in practice and that offline metrics alone will not tell you.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {[
@@ -176,15 +176,15 @@ const Product = () => (
           },
           {
             title: "High-resolution vision is non-negotiable",
-            body: "256×256 input is required for precise manipulation. The same recipe at 128×128 scores 0%. The grasp lives in the pixels.",
+            body: "256x256 input is required for precise manipulation. The same recipe at 128x128 scores 0%. The grasp lives in the pixels.",
           },
           {
             title: "Cyclic learning-rate restarts",
-            body: "Warm-restart annealing shakes the policy out of sharp minima. This lifted success from 92% to 94% on identical data — a meaningful gain at the margin.",
+            body: "Warm-restart annealing shakes the policy out of sharp minima. This lifted success from 92% to 94% on identical data. A meaningful gain at the margin.",
           },
           {
             title: "Offline metrics do not predict deployment success",
-            body: "Validation loss lies. Every policy is graded in closed-loop rollouts — hundreds of full episodes — before it earns a checkpoint. Sim performance is the only honest signal.",
+            body: "Validation loss lies. Every policy is graded in closed-loop rollouts, hundreds of full episodes, before it earns a checkpoint. Sim performance is the only honest signal.",
           },
         ].map(({ title, body }) => (
           <div key={title} className="border border-white/10 rounded-lg p-6">
@@ -195,10 +195,10 @@ const Product = () => (
       </div>
     </Section>
 
-    {/* Section 6 — Competitive positioning */}
+    {/* Section 6 */}
     <Section>
       <Label>Positioning</Label>
-      <Heading>Built on sims — not against them</Heading>
+      <Heading>Built on sims, not against them</Heading>
       <p className="text-base text-white/70 leading-relaxed max-w-2xl mb-10">
         Sim2Real is not a physics engine. It is the methodology and tooling built on top of whatever simulator your team already uses.
       </p>
@@ -207,7 +207,7 @@ const Product = () => (
           <thead>
             <tr className="border-b border-white/10">
               <th className="py-3 pr-6 text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground font-normal w-1/3"></th>
-              <th className="py-3 pr-6 text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground font-normal">Simulators (Isaac, MuJoCo…)</th>
+              <th className="py-3 pr-6 text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground font-normal">Simulators (Isaac, MuJoCo...)</th>
               <th className="py-3 text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground font-normal">Sim2Real</th>
             </tr>
           </thead>
@@ -215,9 +215,9 @@ const Product = () => (
             {[
               { label: "What it is", sim: "Physics engine", s2r: "Training method + tooling on top of any sim" },
               { label: "What is delivered", sim: "Simulation software", s2r: "Working robot policies" },
-              { label: "Data pipeline", sim: "Human demos: teleoperation, mocap", s2r: "Scripted solver → unlimited synthetic data, no human" },
+              { label: "Data pipeline", sim: "Human demos: teleoperation, mocap", s2r: "Scripted solver, unlimited synthetic data, no human" },
               { label: "Deployment test", sim: "Try every policy on hardware", s2r: "Filter policies before hardware touches them" },
-              { label: "Relationship", sim: "Infrastructure", s2r: "Built on top — sims are the engine" },
+              { label: "Relationship", sim: "Infrastructure", s2r: "Built on top. Sims are the engine." },
             ].map(({ label, sim, s2r }) => (
               <tr key={label} className="border-b border-white/5">
                 <td className="py-4 pr-6 text-xs font-heading tracking-[0.15em] uppercase text-muted-foreground">{label}</td>
@@ -241,7 +241,7 @@ const Product = () => (
         to="/contact"
         className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
       >
-        Let’s talk about your deployment bottleneck →
+        Talk about your deployment bottleneck
       </Link>
     </Section>
 
