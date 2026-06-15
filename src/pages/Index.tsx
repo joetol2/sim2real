@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-function Section({ children, dark = false, narrow = false, style }: { children: React.ReactNode; dark?: boolean; narrow?: boolean; style?: React.CSSProperties }) {
+function Section({ children, dark = false, style }: { children: React.ReactNode; dark?: boolean; style?: React.CSSProperties }) {
   const { ref, isVisible } = useScrollReveal();
   return (
     <section
@@ -12,7 +12,7 @@ function Section({ children, dark = false, narrow = false, style }: { children: 
     >
       <div
         ref={ref}
-        className={`${narrow ? "max-w-3xl" : "max-w-6xl"} mx-auto px-8 sm:px-12 lg:px-20 transition-all duration-700 ease-out ${
+        className={`max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 transition-all duration-700 ease-out ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
@@ -52,63 +52,69 @@ const Index = () => {
       <HeroSection />
 
       {/* Section 1 */}
-      <Section narrow>
-        <Label>The problem</Label>
-        <Heading>Simulation is not the finish line</Heading>
-        <div className="mb-8 p-6 border border-white/10 rounded-lg inline-block">
-          <p className="text-4xl font-heading font-semibold text-foreground mb-1">3-5x</p>
-          <p className="text-sm text-white/60">more spent on deployment than budgeted</p>
+      <Section>
+        <div className="max-w-3xl">
+          <Label>The problem</Label>
+          <Heading>Simulation is not the finish line</Heading>
+          <div className="mb-8 p-6 border border-white/10 rounded-lg inline-block">
+            <p className="text-4xl font-heading font-semibold text-foreground mb-1">3-5x</p>
+            <p className="text-sm text-white/60">more spent on deployment than budgeted</p>
+          </div>
+          <Body>
+            Robotics teams can generate massive amounts of activity in simulation. The hard part starts when those policies meet the physical world.
+          </Body>
+          <p className="text-base text-white/70 leading-relaxed mt-4">
+            That is where time gets lost and costs climb. Confidence in the rollout drops with them. Hardware testing becomes deployment roulette. No way to predict which policies transfer until you try them all on real equipment.
+          </p>
+          <p className="text-base text-white/70 leading-relaxed mt-4">
+            Sim2Real is built for that transition. We help teams move from simulated performance to real-world readiness with a training and deployment workflow designed for transfer, not just for success inside the simulator.
+          </p>
         </div>
-        <Body>
-          Robotics teams can generate massive amounts of activity in simulation. The hard part starts when those policies meet the physical world.
-        </Body>
-        <p className="text-base text-white/70 leading-relaxed mt-4">
-          That is where time gets lost and costs climb. Confidence in the rollout drops with them. Hardware testing becomes deployment roulette. No way to predict which policies transfer until you try them all on real equipment.
-        </p>
-        <p className="text-base text-white/70 leading-relaxed mt-4">
-          Sim2Real is built for that transition. We help teams move from simulated performance to real-world readiness with a training and deployment workflow designed for transfer, not just for success inside the simulator.
-        </p>
       </Section>
 
       {/* Section 2 */}
-      <Section dark narrow>
-        <Label>What Sim2Real does</Label>
-        <Heading>We provide the workflow that sits between simulation and deployment.</Heading>
-        <p className="text-base text-white/70 leading-relaxed mb-8">Our approach helps teams:</p>
-        <ul className="space-y-3 text-base text-white/70 leading-relaxed mb-8">
-          {[
-            "Generate synthetic training data at scale, with no humans in the loop",
-            "Train policies on the signals a real robot can actually use",
-            "Evaluate candidate policies before expensive hardware rollout",
-            "Reduce dependence on slow, manual demonstration collection",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p className="text-base text-white/70 leading-relaxed">
-          The result is a more practical path from simulation to real robot behavior.
-        </p>
+      <Section dark>
+        <div className="max-w-3xl">
+          <Label>What Sim2Real does</Label>
+          <Heading>We provide the workflow that sits between simulation and deployment.</Heading>
+          <p className="text-base text-white/70 leading-relaxed mb-8">Our approach helps teams:</p>
+          <ul className="space-y-3 text-base text-white/70 leading-relaxed mb-8">
+            {[
+              "Generate synthetic training data at scale, with no humans in the loop",
+              "Train policies on the signals a real robot can actually use",
+              "Evaluate candidate policies before expensive hardware rollout",
+              "Reduce dependence on slow, manual demonstration collection",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="text-base text-white/70 leading-relaxed">
+            The result is a more practical path from simulation to real robot behavior.
+          </p>
+        </div>
       </Section>
 
       {/* Section 3 */}
-      <Section narrow>
-        <Label>The differentiator</Label>
-        <Heading>No humans in the loop</Heading>
-        <Body>
-          Most sim-to-real workflows are still bottlenecked by human demonstrations: teleoperation, motion capture, and other manual processes that do not scale to meet the volume simulation can generate.
-        </Body>
-        <p className="text-base text-white/70 leading-relaxed mt-4">
-          Sim2Real eliminates that bottleneck entirely. Our method generates unlimited training data from simulation without a single human demonstration. The deployed policy learns only from what a real robot can actually observe. And it works.
-        </p>
-        <Link
-          to="/product"
-          className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
-        >
-          See how it works
-        </Link>
+      <Section>
+        <div className="max-w-3xl">
+          <Label>The differentiator</Label>
+          <Heading>No humans in the loop</Heading>
+          <Body>
+            Most sim-to-real workflows are still bottlenecked by human demonstrations: teleoperation, motion capture, and other manual processes that do not scale to meet the volume simulation can generate.
+          </Body>
+          <p className="text-base text-white/70 leading-relaxed mt-4">
+            Sim2Real eliminates that bottleneck entirely. Our method generates unlimited training data from simulation without a single human demonstration. The deployed policy learns only from what a real robot can actually observe. And it works.
+          </p>
+          <Link
+            to="/product"
+            className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
+          >
+            See how it works
+          </Link>
+        </div>
       </Section>
 
       {/* Section 4 */}
@@ -143,25 +149,27 @@ const Index = () => {
       </Section>
 
       {/* Section 5 */}
-      <Section narrow>
-        <Label>The bottleneck</Label>
-        <Heading>Built for the deployment problem</Heading>
-        <p className="text-base text-white/70 leading-relaxed mb-4">Most sim workflows still break down for familiar reasons:</p>
-        <ul className="space-y-3 text-base text-white/70 leading-relaxed mb-8">
-          {[
-            "Human data collection is slow and expensive",
-            "Policies overfit to simulator-specific conditions",
-            "Hardware testing becomes the only real filter",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-        <Body>
-          Sim2Real addresses that bottleneck directly. We help teams build in variability earlier and screen policies before they reach hardware.
-        </Body>
+      <Section>
+        <div className="max-w-3xl">
+          <Label>The bottleneck</Label>
+          <Heading>Built for the deployment problem</Heading>
+          <p className="text-base text-white/70 leading-relaxed mb-4">Most sim workflows still break down for familiar reasons:</p>
+          <ul className="space-y-3 text-base text-white/70 leading-relaxed mb-8">
+            {[
+              "Human data collection is slow and expensive",
+              "Policies overfit to simulator-specific conditions",
+              "Hardware testing becomes the only real filter",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <Body>
+            Sim2Real addresses that bottleneck directly. We help teams build in variability earlier and screen policies before they reach hardware.
+          </Body>
+        </div>
       </Section>
 
       {/* Section 6 */}
@@ -185,43 +193,49 @@ const Index = () => {
       </Section>
 
       {/* Section 7 */}
-      <Section narrow>
-        <Label>Infrastructure</Label>
-        <Heading>Built on sims, not against them</Heading>
-        <Body>
-          Sim2Real is not a physics engine. It is the training and deployment layer built on top of simulation platforms.
-        </Body>
-        <p className="text-base text-white/70 leading-relaxed mt-4">
-          Teams keep the infrastructure they already rely on. We give them a better workflow on top of it: one focused on generating more useful training data and producing policies that are actually ready for hardware. Compatible with Isaac Sim, MuJoCo, PyBullet, Gazebo, Webots, and Genesis.
-        </p>
+      <Section>
+        <div className="max-w-3xl">
+          <Label>Infrastructure</Label>
+          <Heading>Built on sims, not against them</Heading>
+          <Body>
+            Sim2Real is not a physics engine. It is the training and deployment layer built on top of simulation platforms.
+          </Body>
+          <p className="text-base text-white/70 leading-relaxed mt-4">
+            Teams keep the infrastructure they already rely on. We give them a better workflow on top of it: one focused on generating more useful training data and producing policies that are actually ready for hardware. Compatible with Isaac Sim, MuJoCo, PyBullet, Gazebo, Webots, and Genesis.
+          </p>
+        </div>
       </Section>
 
       {/* Section 8 */}
-      <Section dark narrow>
-        <Label>Who this is for</Label>
-        <Heading>Anyone who makes robots</Heading>
-        <Body>
-          If your team develops robot control policies in simulation and needs them to work on real hardware, Sim2Real is relevant to you.
-        </Body>
-        <p className="text-base text-white/70 leading-relaxed mt-4">
-          We are especially useful for teams working on manipulation and control tasks where deployment cycles are slow or expensive. The method is task-agnostic and has been validated across manipulation, locomotion, navigation, tool use, and human-robot interaction.
-        </p>
+      <Section dark>
+        <div className="max-w-3xl">
+          <Label>Who this is for</Label>
+          <Heading>Anyone who makes robots</Heading>
+          <Body>
+            If your team develops robot control policies in simulation and needs them to work on real hardware, Sim2Real is relevant to you.
+          </Body>
+          <p className="text-base text-white/70 leading-relaxed mt-4">
+            We are especially useful for teams working on manipulation and control tasks where deployment cycles are slow or expensive. The method is task-agnostic and has been validated across manipulation, locomotion, navigation, tool use, and human-robot interaction.
+          </p>
+        </div>
       </Section>
 
       {/* Final CTA */}
-      <Section narrow>
-        <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-4">
-          If simulation is part of your stack, it should be helping you deploy.
-        </p>
-        <p className="text-base text-white/70 leading-relaxed mb-10">
-          Talk to us about making your training pipeline more useful in the real world.
-        </p>
-        <Link
-          to="/contact"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
-        >
-          Talk to us
-        </Link>
+      <Section>
+        <div className="max-w-3xl">
+          <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-4">
+            If simulation is part of your stack, it should be helping you deploy.
+          </p>
+          <p className="text-base text-white/70 leading-relaxed mb-10">
+            Talk to us about making your training pipeline more useful in the real world.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
+          >
+            Talk to us
+          </Link>
+        </div>
       </Section>
 
       <Footer />

@@ -3,7 +3,7 @@ import PageNav from "@/components/PageNav";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-function Section({ children, dark = false, narrow = false }: { children: React.ReactNode; dark?: boolean; narrow?: boolean }) {
+function Section({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   const { ref, isVisible } = useScrollReveal();
   return (
     <section
@@ -12,7 +12,7 @@ function Section({ children, dark = false, narrow = false }: { children: React.R
     >
       <div
         ref={ref}
-        className={`${narrow ? "max-w-3xl" : "max-w-6xl"} mx-auto px-8 sm:px-12 lg:px-20 transition-all duration-700 ease-out ${
+        className={`max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 transition-all duration-700 ease-out ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
@@ -52,15 +52,17 @@ const Product = () => (
     </section>
 
     {/* Section 1 */}
-    <Section dark narrow>
-      <Label>What the product is</Label>
-      <Heading>Methodology and tooling for the sim-to-real gap</Heading>
-      <p className="text-base text-white/70 leading-relaxed mb-4">
-        Sim2Real is a methodology and tooling layer for teams developing robot control policies in simulation.
-      </p>
-      <p className="text-base text-white/70 leading-relaxed">
-        It is designed to improve the path from training to transfer by making simulation outputs more relevant to real deployment conditions. Instead of treating simulated success as the goal, Sim2Real is built to make simulated work more useful when the policy leaves the simulator.
-      </p>
+    <Section dark>
+      <div className="max-w-3xl">
+        <Label>What the product is</Label>
+        <Heading>Methodology and tooling for the sim-to-real gap</Heading>
+        <p className="text-base text-white/70 leading-relaxed mb-4">
+          Sim2Real is a methodology and tooling layer for teams developing robot control policies in simulation.
+        </p>
+        <p className="text-base text-white/70 leading-relaxed">
+          It is designed to improve the path from training to transfer by making simulation outputs more relevant to real deployment conditions. Instead of treating simulated success as the goal, Sim2Real is built to make simulated work more useful when the policy leaves the simulator.
+        </p>
+      </div>
     </Section>
 
     {/* Section 2 */}
@@ -229,18 +231,20 @@ const Product = () => (
     </Section>
 
     {/* CTA */}
-    <Section dark narrow>
-      <Label>Get started</Label>
-      <Heading>Interested in applying Sim2Real to your stack?</Heading>
-      <p className="text-base text-white/70 leading-relaxed mb-10">
-        If your team is generating data in simulation but struggling to make it count on real hardware, we should talk.
-      </p>
-      <Link
-        to="/contact"
-        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
-      >
-        Talk about your deployment bottleneck
-      </Link>
+    <Section dark>
+      <div className="max-w-3xl">
+        <Label>Get started</Label>
+        <Heading>Interested in applying Sim2Real to your stack?</Heading>
+        <p className="text-base text-white/70 leading-relaxed mb-10">
+          If your team is generating data in simulation but struggling to make it count on real hardware, we should talk.
+        </p>
+        <Link
+          to="/contact"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#012b62] text-sm font-heading font-semibold tracking-wide uppercase rounded hover:bg-white/90 transition-colors duration-300"
+        >
+          Talk about your deployment bottleneck
+        </Link>
+      </div>
     </Section>
 
     <Footer />
