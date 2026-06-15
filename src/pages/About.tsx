@@ -31,7 +31,7 @@ const team = [
   {
     name: "Fabian Friedland",
     role: "CSO & Co-Founder",
-    bio: "CEO, TychoBot (2023-2025). Led Global Business Development at On2 Technologies, acquired by Google. Operator, entrepreneur, and machine learning practitioner.",
+    bio: "CEO, TychoBot (2023-2025). Led Global Business Development at On2 Technologies, acquired by Google. Operator and entrepreneur with a background in machine learning.",
   },
   {
     name: "David Silver",
@@ -73,12 +73,11 @@ const About = () => (
     {/* Section 2 */}
     <Section>
       <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">What we believe</p>
-      <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-8">Three things we keep coming back to</h2>
+      <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-8">What we keep coming back to</h2>
       <ul className="space-y-4 text-base text-white/70 leading-relaxed">
         {[
-          "Simulation should do more of the heavy lifting before a policy reaches real hardware.",
-          "Robotics teams need a scalable path to training data generation, one that does not depend on human demonstrations.",
-          "Deployment confidence should improve before costly physical testing begins.",
+          "Simulation should be doing more of the heavy lifting before a policy reaches real hardware, and that starts with better training data.",
+          "Deployment confidence should come from the training workflow, not from repeated hardware trials.",
         ].map((item) => (
           <li key={item} className="flex items-start gap-3">
             <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
@@ -109,7 +108,7 @@ const About = () => (
         <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Where we are headed</p>
         <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">What comes next</h2>
         <p className="text-base text-white/70 leading-relaxed mb-4">
-          Our immediate focus is helping robotics teams get more out of simulation today: generating better data, training more transferable policies, and shipping working robots faster.
+          Our immediate focus is helping robotics teams get more out of simulation today: generating better training data and producing policies that hold up when the robot leaves the simulator.
         </p>
         <p className="text-base text-white/70 leading-relaxed mb-4">
           Longer term, we are interested in a more fundamental question: what if the best simulator is no simulator at all?

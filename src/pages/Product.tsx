@@ -70,7 +70,7 @@ const Product = () => (
       <Label>The method</Label>
       <Heading>How it works: no humans in the loop</Heading>
       <p className="text-base text-white/70 leading-relaxed max-w-2xl mb-10">
-        Three steps. Unlimited data. Zero human demonstrations.
+        Unlimited data. Zero human demonstrations.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[

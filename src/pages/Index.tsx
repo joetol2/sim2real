@@ -64,7 +64,7 @@ const Index = () => {
             Robotics teams can generate massive amounts of activity in simulation. The hard part starts when those policies meet the physical world.
           </Body>
           <p className="text-base text-white/70 leading-relaxed max-w-2xl mt-4">
-            That is where time gets lost, costs climb, and confidence drops. Hardware testing becomes deployment roulette. No way to predict which policies transfer until you try them all on real equipment.
+            That is where time gets lost and costs climb. Confidence in the rollout drops with them. Hardware testing becomes deployment roulette. No way to predict which policies transfer until you try them all on real equipment.
           </p>
           <p className="text-base text-white/70 leading-relaxed max-w-2xl mt-4">
             Sim2Real is built for that transition. We help teams move from simulated performance to real-world readiness with a training and deployment workflow designed for transfer, not just for success inside the simulator.
@@ -101,7 +101,7 @@ const Index = () => {
           <Label>The differentiator</Label>
           <Heading>No humans in the loop</Heading>
           <Body>
-            Most sim-to-real workflows are still bottlenecked by human demonstrations: teleoperation, motion capture, manual labeling. These are slow, expensive, and hard to scale.
+            Most sim-to-real workflows are still bottlenecked by human demonstrations: teleoperation, motion capture, and other manual processes that do not scale to meet the volume simulation can generate.
           </Body>
           <p className="text-base text-white/70 leading-relaxed max-w-2xl mt-4">
             Sim2Real eliminates that bottleneck entirely. Our method generates unlimited training data from simulation without a single human demonstration. The deployed policy learns only from what a real robot can actually observe. And it works.
@@ -165,7 +165,7 @@ const Index = () => {
             ))}
           </ul>
           <Body>
-            Sim2Real addresses that bottleneck directly. We help teams train for variability earlier, screen policies sooner, and spend less time learning the same lesson on real hardware.
+            Sim2Real addresses that bottleneck directly. We help teams build in variability earlier and screen policies before they reach hardware.
           </Body>
         </div>
       </Section>
@@ -199,7 +199,7 @@ const Index = () => {
             Sim2Real is not a physics engine. It is the training and deployment layer built on top of simulation platforms.
           </Body>
           <p className="text-base text-white/70 leading-relaxed max-w-2xl mt-4">
-            Teams keep the infrastructure they already rely on. We give them a better workflow on top of it: better data generation, better policy training, better decisions about what is worth testing on hardware. Compatible with Isaac Sim, MuJoCo, PyBullet, Gazebo, Webots, and Genesis.
+            Teams keep the infrastructure they already rely on. We give them a better workflow on top of it: one focused on generating more useful training data and producing policies that are actually ready for hardware. Compatible with Isaac Sim, MuJoCo, PyBullet, Gazebo, Webots, and Genesis.
           </p>
         </div>
       </Section>
@@ -213,7 +213,7 @@ const Index = () => {
             If your team develops robot control policies in simulation and needs them to work on real hardware, Sim2Real is relevant to you.
           </Body>
           <p className="text-base text-white/70 leading-relaxed max-w-2xl mt-4">
-            We are especially useful for teams working on manipulation, control, and deployment-heavy workflows where repeated hardware iteration is too slow or too expensive. The method is task-agnostic and has been validated across manipulation, locomotion, navigation, tool use, and human-robot interaction.
+            We are especially useful for teams working on manipulation and control tasks where deployment cycles are slow or expensive. The method is task-agnostic and has been validated across manipulation, locomotion, navigation, tool use, and human-robot interaction.
           </p>
         </div>
       </Section>

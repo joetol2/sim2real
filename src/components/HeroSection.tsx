@@ -27,7 +27,7 @@ const HeroSection = () => {
             Train in simulation.<br />Deploy in reality.
           </h1>
           <p className="animate-fade-up-delay-2 text-lg sm:text-xl text-white/80 leading-relaxed max-w-2xl mb-10">
-            Sim2Real helps robotics teams turn simulation into a more reliable path to deployment, with scalable synthetic training data, sensor-consistent policy training, and fewer wasted hardware test cycles. No human demonstrations required.
+            Sim2Real helps robotics teams turn simulation into a more reliable path to deployment, with scalable synthetic training data that produces policies built to transfer, not just to succeed in the simulator. No human demonstrations required.
           </p>
           <div className="animate-fade-up-delay-2 flex flex-wrap gap-4">
             <Link
