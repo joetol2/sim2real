@@ -50,7 +50,7 @@ const SocialIcons = () => (
     <a href="#" aria-label="YouTube"><YouTube /></a>
     <a href="#" aria-label="Substack"><Substack /></a>
     <a href="#" aria-label="Discord"><Discord /></a>
-    <Link to="/see-it-in-action" aria-label="See it in action"><Eye /></Link>
+    <Link to="/see-it-in-action" aria-label="See it in action" className="opacity-0 hover:opacity-100 transition-opacity duration-300"><Eye /></Link>
   </div>
 );
 

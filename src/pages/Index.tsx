@@ -120,7 +120,13 @@ const Index = () => {
       {/* Section 4 */}
       <Section dark>
         <Label>What we have proven</Label>
-        <Heading>Results, not promises</Heading>
+        <Link to="/see-it-in-action" className="group inline-flex items-center gap-3 mb-6 no-underline">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold tracking-tight leading-[1.15] text-foreground group-hover:text-white/90 transition-colors duration-300">Results, not promises</h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mt-1">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </Link>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
           {[
             {
