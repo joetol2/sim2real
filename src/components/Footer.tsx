@@ -36,23 +36,33 @@ const Discord = () => (
   </svg>
 );
 
-const Eye = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={iconClass}>
+const Eye = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={`${iconClass} ${className}`}>
     <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
     <circle cx="12" cy="12" r="3"/>
   </svg>
 );
 
-const SocialIcons = () => (
-  <div className="flex items-center gap-4">
-    <a href="#" aria-label="Instagram"><Instagram /></a>
-    <a href="#" aria-label="X"><XTwitter /></a>
-    <a href="#" aria-label="YouTube"><YouTube /></a>
-    <a href="#" aria-label="Substack"><Substack /></a>
-    <a href="#" aria-label="Discord"><Discord /></a>
-    <Link to="/see-it-in-action" aria-label="See it in action" className="opacity-0 hover:opacity-100 transition-opacity duration-300"><Eye /></Link>
-  </div>
-);
+const SocialIcons = () => {
+  const [eyeKey, setEyeKey] = useState(0);
+  return (
+    <div className="flex items-center gap-4">
+      <a href="#" aria-label="Instagram"><Instagram /></a>
+      <a href="#" aria-label="X"><XTwitter /></a>
+      <a href="#" aria-label="YouTube"><YouTube /></a>
+      <a href="#" aria-label="Substack"><Substack /></a>
+      <a href="#" aria-label="Discord"><Discord /></a>
+      <Link
+        to="/see-it-in-action"
+        aria-label="See it in action"
+        className="opacity-0 hover:opacity-100 transition-opacity duration-300"
+        onMouseEnter={() => setEyeKey(k => k + 1)}
+      >
+        <Eye key={eyeKey} className={eyeKey > 0 ? "animate-eye-pop" : ""} />
+      </Link>
+    </div>
+  );
+};
 
 const navLinks = [
   { to: "/product", label: "Product" },
