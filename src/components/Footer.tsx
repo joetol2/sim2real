@@ -56,11 +56,6 @@ const SocialIcons = () => {
 
   return (
     <div className="flex items-center gap-4">
-      <a href="#" aria-label="Instagram"><Instagram /></a>
-      <a href="#" aria-label="X"><XTwitter /></a>
-      <a href="#" aria-label="YouTube"><YouTube /></a>
-      <a href="#" aria-label="Substack"><Substack /></a>
-      <a href="#" aria-label="Discord"><Discord /></a>
       <Link
         to="/see-it-in-action"
         aria-label="See it in action"
@@ -69,6 +64,11 @@ const SocialIcons = () => {
       >
         <Eye className={eyeAnim === 'pop' ? 'animate-eye-pop' : eyeAnim === 'blink' ? 'animate-eye-blink' : ''} />
       </Link>
+      <a href="#" aria-label="Instagram"><Instagram /></a>
+      <a href="#" aria-label="X"><XTwitter /></a>
+      <a href="#" aria-label="YouTube"><YouTube /></a>
+      <a href="#" aria-label="Substack"><Substack /></a>
+      <a href="#" aria-label="Discord"><Discord /></a>
     </div>
   );
 };
