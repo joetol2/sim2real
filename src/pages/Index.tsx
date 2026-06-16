@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
@@ -40,23 +40,30 @@ function Heading({ children }: { children: React.ReactNode }) {
 }
 
 function ResultsLink() {
-  const [eyeKey, setEyeKey] = useState(0);
+  const [eyeAnim, setEyeAnim] = useState<'idle' | 'pop' | 'blink'>('idle');
+  const timerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setEyeAnim('pop');
+    timerRef.current = setTimeout(() => setEyeAnim('blink'), 500);
+  };
+
   return (
     <Link
       to="/see-it-in-action"
       className="group inline-flex items-center gap-3 mb-6 no-underline"
-      onMouseEnter={() => setEyeKey(k => k + 1)}
+      onMouseEnter={handleMouseEnter}
     >
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold tracking-tight leading-[1.15] text-foreground group-hover:text-white/90 transition-colors duration-300">Results, not promises</h2>
       <svg
-        key={eyeKey}
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className={`w-6 h-6 text-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mt-1 ${eyeKey > 0 ? "animate-eye-pop" : ""}`}
+        className={`w-6 h-6 text-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mt-1 ${eyeAnim === 'pop' ? 'animate-eye-pop' : eyeAnim === 'blink' ? 'animate-eye-blink' : ''}`}
       >
         <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
         <circle cx="12" cy="12" r="3"/>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -44,7 +44,15 @@ const Eye = ({ className = "" }: { className?: string }) => (
 );
 
 const SocialIcons = () => {
-  const [eyeKey, setEyeKey] = useState(0);
+  const [eyeAnim, setEyeAnim] = useState<'idle' | 'pop' | 'blink'>('idle');
+  const timerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setEyeAnim('pop');
+    timerRef.current = setTimeout(() => setEyeAnim('blink'), 500);
+  };
+
   return (
     <div className="flex items-center gap-4">
       <a href="#" aria-label="Instagram"><Instagram /></a>
@@ -56,9 +64,9 @@ const SocialIcons = () => {
         to="/see-it-in-action"
         aria-label="See it in action"
         className="opacity-0 hover:opacity-100 transition-opacity duration-300"
-        onMouseEnter={() => setEyeKey(k => k + 1)}
+        onMouseEnter={handleMouseEnter}
       >
-        <Eye key={eyeKey} className={eyeKey > 0 ? "animate-eye-pop" : ""} />
+        <Eye className={eyeAnim === 'pop' ? 'animate-eye-pop' : eyeAnim === 'blink' ? 'animate-eye-blink' : ''} />
       </Link>
     </div>
   );
