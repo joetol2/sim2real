@@ -38,8 +38,9 @@ const Discord = () => (
 
 const Eye = ({ className = "" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={`${iconClass} ${className}`}>
-    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
-    <circle cx="12" cy="12" r="3"/>
+    <path d="M2 12 C5.5 19 18.5 19 22 12" />
+    <path className="eye-lid" d="M2 12 C5.5 5 18.5 5 22 12" />
+    <circle className="eye-pupil" cx="12" cy="12" r="3" />
   </svg>
 );
 

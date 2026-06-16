@@ -65,8 +65,9 @@ function ResultsLink() {
         strokeLinejoin="round"
         className={`w-6 h-6 text-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mt-1 ${eyeAnim === 'pop' ? 'animate-eye-pop' : eyeAnim === 'blink' ? 'animate-eye-blink' : ''}`}
       >
-        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
-        <circle cx="12" cy="12" r="3"/>
+        <path d="M2 12 C5.5 19 18.5 19 22 12" />
+        <path className="eye-lid" d="M2 12 C5.5 5 18.5 5 22 12" />
+        <circle className="eye-pupil" cx="12" cy="12" r="3" />
       </svg>
     </Link>
   );

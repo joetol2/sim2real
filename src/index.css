@@ -124,11 +124,23 @@ footer.border-t::before {
   animation: eye-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-@keyframes eye-blink {
-  0%, 2%, 100% { transform: scaleY(1); }
-  1%            { transform: scaleY(0.05); }
+@keyframes eye-lid-close {
+  0%, 10%   { transform: scaleY(1); }
+  35%, 60%  { transform: scaleY(0); }
+  85%, 100% { transform: scaleY(1); }
 }
 
-.animate-eye-blink {
-  animation: eye-blink 4s linear infinite;
+@keyframes eye-pupil-hide {
+  0%, 20%   { opacity: 1; }
+  35%, 65%  { opacity: 0; }
+  80%, 100% { opacity: 1; }
+}
+
+.animate-eye-blink .eye-lid {
+  transform-origin: 12px 12px;
+  animation: eye-lid-close 6s ease-in-out infinite;
+}
+
+.animate-eye-blink .eye-pupil {
+  animation: eye-pupil-hide 6s ease-in-out infinite;
 }
