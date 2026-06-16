@@ -36,6 +36,13 @@ const Discord = () => (
   </svg>
 );
 
+const Eye = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={iconClass}>
+    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </svg>
+);
+
 const SocialIcons = () => (
   <div className="flex items-center gap-4">
     <a href="#" aria-label="Instagram"><Instagram /></a>
@@ -43,6 +50,7 @@ const SocialIcons = () => (
     <a href="#" aria-label="YouTube"><YouTube /></a>
     <a href="#" aria-label="Substack"><Substack /></a>
     <a href="#" aria-label="Discord"><Discord /></a>
+    <Link to="/see-it-in-action" aria-label="See it in action"><Eye /></Link>
   </div>
 );
 

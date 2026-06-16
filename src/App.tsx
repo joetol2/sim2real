@@ -12,6 +12,7 @@ import Demos from "./pages/Demos.tsx";
 import Physics from "./pages/Physics.tsx";
 import Models from "./pages/Models.tsx";
 import Press from "./pages/Press.tsx";
+import SeeItInAction from "./pages/SeeItInAction.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/physics" element={<Physics />} />
           <Route path="/models" element={<Models />} />
           <Route path="/press" element={<Press />} />
+          <Route path="/see-it-in-action" element={<SeeItInAction />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
