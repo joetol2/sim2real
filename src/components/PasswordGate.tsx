@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const PASSWORD = "sim2real2026";
+const PASSWORD = "s2rVIP";
 const SESSION_KEY = "sim2real_gate_ok";
 
 const PasswordGate = ({ children }: { children: React.ReactNode }) => {
