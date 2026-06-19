@@ -142,3 +142,94 @@ footer.border-t::before {
 .animate-eye-blink .eye-pupil {
   animation: eye-pupil-hide 10s linear infinite;
 }
+
+/* ── Password gate ── */
+.gate-card {
+  background: linear-gradient(160deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 100%);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 20px;
+  padding: 44px 40px 40px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06) inset;
+  animation: gate-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes gate-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.gate-brand {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;
+}
+.gate-title {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+.gate-subtitle {
+  margin: 0 0 28px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.6;
+}
+.gate-input-wrap {
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.gate-input-wrap:focus-within {
+  border-color: rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
+}
+.gate-input-wrap.error {
+  border-color: rgba(255,120,100,0.7);
+}
+.gate-input-wrap.shake {
+  animation: gate-shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  border-color: rgba(255,120,100,0.7);
+}
+@keyframes gate-shake {
+  10%, 90% { transform: translateX(-3px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-5px); }
+  40%, 60% { transform: translateX(5px); }
+}
+.gate-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 14px 16px;
+  font-size: 16px;
+  color: #fff;
+  outline: none;
+}
+.gate-input::placeholder { color: rgba(255,255,255,0.35); }
+.gate-btn {
+  border: none;
+  background: rgba(255,255,255,0.15);
+  padding: 0 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+}
+.gate-btn:hover { background: rgba(255,255,255,0.28); }
+.gate-error {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #ff8a80;
+  opacity: 0;
+  transition: opacity 0.25s;
+  height: 18px;
+}
+.gate-error.visible { opacity: 1; }

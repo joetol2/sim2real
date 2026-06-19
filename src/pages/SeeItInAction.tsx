@@ -1,6 +1,7 @@
 import PageNav from "@/components/PageNav";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import PasswordGate from "@/components/PasswordGate";
 import cubeStack from "@/assets/videos/cube_stack.mp4";
 import diceSort from "@/assets/videos/dice_sort.mp4";
 import diceThrow from "@/assets/videos/dice_throw_clean.mp4";
@@ -52,6 +53,7 @@ const demos = [
 ];
 
 const SeeItInAction = () => (
+  <PasswordGate>
   <main className="min-h-screen">
     <PageNav />
 
@@ -97,6 +99,7 @@ const SeeItInAction = () => (
 
     <Footer />
   </main>
+  </PasswordGate>
 );
 
 export default SeeItInAction;
