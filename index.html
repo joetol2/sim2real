@@ -32,7 +32,7 @@
           }, {});
           window.history.replaceState(
             null, null,
-            l.pathname + (params.p ? '/' + params.p : '') +
+            '/' + (params.p ? params.p : '') +
             (params.q ? '?' + params.q : '') +
             l.hash
           );

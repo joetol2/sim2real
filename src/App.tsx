@@ -23,7 +23,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/sim2real-v2">
+      <BrowserRouter basename="/">
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />

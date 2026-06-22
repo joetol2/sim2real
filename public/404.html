@@ -5,11 +5,9 @@
     <title>Sim2Real</title>
     <script>
       var l = window.location;
-      var base = '/sim2real-v2';
-      var path = l.pathname.startsWith(base) ? l.pathname.slice(base.length) : l.pathname;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        base + '/?p=' + path.slice(1).replace(/&/g, '~and~') +
+        '/?p=' + l.pathname.slice(1).replace(/&/g, '~and~') +
         (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
