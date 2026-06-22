@@ -63,7 +63,7 @@ const stages = [
       { value: "25", label: "epochs" },
       { value: "1h 25min", label: "training time" },
     ],
-    body: "Hover generalized to multi-point navigation. The policy routes between arbitrary waypoints without GPS or motion capture. Each stage builds on the last — the method reads session notes from prior experiments and predicts the best training approach for the next task.",
+    body: "Hover generalized to multi-point navigation. The policy routes between arbitrary waypoints without GPS or motion capture. Each stage builds on the last. The method reads session notes from prior experiments and predicts the best training approach for the next task.",
   },
   {
     video: stage3,
