@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import PageNav from "@/components/PageNav";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -87,6 +88,46 @@ const stages = [
   },
 ];
 
+function StageSection({ video, label, title, stats, body, index }: {
+  video: string; label: string; title: string;
+  stats: { value: string; label: string }[]; body: string; index: number;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const flip = index % 2 === 1;
+  return (
+    <Section dark={index % 2 === 0}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className={flip ? "lg:order-2" : ""}>
+          <video
+            ref={videoRef}
+            src={video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full rounded-lg border border-white/10"
+          />
+          <div className="flex justify-between items-center mt-2 px-1">
+            <button
+              onClick={() => { if (videoRef.current) { videoRef.current.currentTime = 0; videoRef.current.play(); } }}
+              className="text-xs text-white/40 hover:text-white/70 transition-colors duration-200"
+            >
+              restart
+            </button>
+            <span className="text-xs text-white/40">playback in real time</span>
+          </div>
+        </div>
+        <div className={flip ? "lg:order-1" : ""}>
+          <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-4">{label}</p>
+          <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
+          <StatCard rows={stats} />
+          <p className="text-base text-white/70 leading-relaxed">{body}</p>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 const Drone = () => (
   <PasswordGate>
     <main className="min-h-screen">
@@ -110,26 +151,7 @@ const Drone = () => (
 
       {/* Stage sections */}
       {stages.map(({ video, label, title, stats, body }, i) => (
-        <Section key={label} dark={i % 2 === 0}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-              <video
-                src={video}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full rounded-lg border border-white/10"
-              />
-            </div>
-            <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-              <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-4">{label} of 04</p>
-              <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
-              <StatCard rows={stats} />
-              <p className="text-base text-white/70 leading-relaxed">{body}</p>
-            </div>
-          </div>
-        </Section>
+        <StageSection key={label} video={video} label={label} title={title} stats={stats} body={body} index={i} />
       ))}
 
       {/* Bottom CTA */}
