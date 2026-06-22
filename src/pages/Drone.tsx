@@ -99,16 +99,10 @@ const Drone = () => (
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
             From arms to air
           </h1>
-          <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
+          <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-6">
             The same method. No human demonstrations. Applied to a drone learning to clean, one stage at a time.
           </p>
-        </div>
-      </section>
-
-      {/* Context callout */}
-      <section className="border-t border-border" style={{ backgroundColor: '#012b62' }}>
-        <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-20 py-16">
-          <p className="text-base sm:text-lg text-white/70 leading-relaxed">
+          <p className="text-base text-white/70 leading-relaxed">
             Robotics teams assume that different tasks require different approaches. We trained a drone to hover, navigate, and handle objects of varying weights using only synthetic data and the same pipeline we use for everything else. No task-specific engineering. No human in the loop.
           </p>
         </div>
@@ -139,8 +133,8 @@ const Drone = () => (
       ))}
 
       {/* Bottom CTA */}
-      <section className="py-20 sm:py-28 border-t border-border">
-        <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-20 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+      <section className="py-20 sm:py-28 border-t border-border" style={{ backgroundColor: '#012b62' }}>
+        <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-20 flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link
             to="/see-it-in-action"
             className="text-sm font-heading tracking-[0.2em] uppercase text-white/60 hover:text-white/90 transition-colors duration-200"

@@ -99,8 +99,8 @@ const SeeItInAction = () => (
     ))}
 
     {/* Drone link */}
-    <section className="py-16 border-t border-border">
-      <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-20">
+    <section className="py-16 border-t border-border" style={{ backgroundColor: '#012b62' }}>
+      <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-20 text-center">
         <Link
           to="/drone"
           className="text-sm font-heading tracking-[0.2em] uppercase text-white/60 hover:text-white/90 transition-colors duration-200"
