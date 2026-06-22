@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PageNav from "@/components/PageNav";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -96,6 +97,18 @@ const SeeItInAction = () => (
         </div>
       </Section>
     ))}
+
+    {/* Drone link */}
+    <section className="py-16 border-t border-border">
+      <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-20">
+        <Link
+          to="/drone"
+          className="text-sm font-heading tracking-[0.2em] uppercase text-white/60 hover:text-white/90 transition-colors duration-200"
+        >
+          See how the method works for drones &rarr;
+        </Link>
+      </div>
+    </section>
 
     <Footer />
   </main>
