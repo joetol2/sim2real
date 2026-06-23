@@ -252,23 +252,28 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
       const bodies = bodiesRef.current;
       const gravityOn = gravityRef.current;
 
-      for (const b of bodies) {
-        if (b.dragging) continue;
-        if (gravityOn) b.vy += GRAVITY * dt;
-        b.x += b.vx * dt;
-        b.y += b.vy * dt;
-        if (b.type !== "circle") b.angle += b.av * dt;
+      const SUBSTEPS = 3;
+      const sdt = dt / SUBSTEPS;
 
-        const r = b.radius;
-        if (b.x - r < 0)    { b.x = r;     b.vx =  Math.abs(b.vx) * 0.72; }
-        if (b.x + r > W)    { b.x = W - r; b.vx = -Math.abs(b.vx) * 0.72; }
-        if (b.y - r < 0)    { b.y = r;     b.vy =  Math.abs(b.vy) * 0.72; }
-        if (b.y + r > H)    { b.y = H - r; b.vy = -Math.abs(b.vy) * (gravityOn ? 0.60 : 0.72); }
-      }
+      for (let s = 0; s < SUBSTEPS; s++) {
+        for (const b of bodies) {
+          if (b.dragging) continue;
+          if (gravityOn) b.vy += GRAVITY * sdt;
+          b.x += b.vx * sdt;
+          b.y += b.vy * sdt;
+          if (b.type !== "circle") b.angle += b.av * sdt;
 
-      for (let i = 0; i < bodies.length; i++) {
-        for (let j = i + 1; j < bodies.length; j++) {
-          resolveCollision(bodies[i], bodies[j]);
+          const r = b.radius;
+          if (b.x - r < 0)    { b.x = r;     b.vx =  Math.abs(b.vx) * 0.72; }
+          if (b.x + r > W)    { b.x = W - r; b.vx = -Math.abs(b.vx) * 0.72; }
+          if (b.y - r < 0)    { b.y = r;     b.vy =  Math.abs(b.vy) * 0.72; }
+          if (b.y + r > H)    { b.y = H - r; b.vy = -Math.abs(b.vy) * (gravityOn ? 0.60 : 0.72); }
+        }
+
+        for (let i = 0; i < bodies.length; i++) {
+          for (let j = i + 1; j < bodies.length; j++) {
+            resolveCollision(bodies[i], bodies[j]);
+          }
         }
       }
 
