@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import PageNav from "@/components/PageNav";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -53,6 +54,49 @@ const demos = [
   },
 ];
 
+function DemoSection({ video, label, title, stat, statLabel, body, index }: {
+  video: string; label: string; title: string;
+  stat: string; statLabel: string; body: string; index: number;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const flip = index % 2 === 1;
+  return (
+    <Section dark={flip}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className={flip ? "lg:order-2" : ""}>
+          <video
+            ref={videoRef}
+            src={video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full rounded-lg border border-white/10"
+          />
+          <div className="flex justify-between items-center mt-2 px-1">
+            <button
+              onClick={() => { if (videoRef.current) { videoRef.current.currentTime = 0; videoRef.current.play(); } }}
+              className="text-xs text-white/40 hover:text-white/70 transition-colors duration-200"
+            >
+              restart
+            </button>
+            <span className="text-xs text-white/40">playback in real time</span>
+          </div>
+        </div>
+        <div className={flip ? "lg:order-1" : ""}>
+          <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-4">{label}</p>
+          <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
+          <div className="mb-6">
+            <p className="text-4xl font-heading font-semibold text-foreground mb-1">{stat}</p>
+            <p className="text-sm text-white/50 font-heading tracking-[0.15em] uppercase">{statLabel}</p>
+          </div>
+          <p className="text-base text-white/70 leading-relaxed">{body}</p>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 const SeeItInAction = () => (
   <PasswordGate>
   <main className="min-h-screen">
@@ -73,29 +117,7 @@ const SeeItInAction = () => (
 
     {/* Demo sections */}
     {demos.map(({ video, label, title, stat, statLabel, body }, i) => (
-      <Section key={label} dark={i % 2 === 1}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-            <video
-              src={video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full rounded-lg border border-white/10"
-            />
-          </div>
-          <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-            <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-4">{label}</p>
-            <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
-            <div className="mb-6">
-              <p className="text-4xl font-heading font-semibold text-foreground mb-1">{stat}</p>
-              <p className="text-sm text-white/50 font-heading tracking-[0.15em] uppercase">{statLabel}</p>
-            </div>
-            <p className="text-base text-white/70 leading-relaxed">{body}</p>
-          </div>
-        </div>
-      </Section>
+      <DemoSection key={label} video={video} label={label} title={title} stat={stat} statLabel={statLabel} body={body} index={i} />
     ))}
 
     {/* Drone link */}
