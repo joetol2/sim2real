@@ -13,6 +13,7 @@ interface Body {
 }
 
 const BREAKPOINT = 768;
+const GRAVITY = 480;
 
 function initBodies(W: number, H: number): Body[] {
   const small = W < BREAKPOINT;
@@ -76,7 +77,7 @@ function initBodies(W: number, H: number): Body[] {
       x: W * 0.71, y: H * 0.22, vx: -58, vy: 72,
       angle: -0.2, av: -0.16, radius: 71, mass: 210,
       type: "rect", w: 128, h: 62,
-      stroke: "rgba(140,195,245,0.32)", fill: "rgba(140,195,245,0.03)",
+      stroke: "rgba(140,195,245,0.55)", fill: "rgba(140,195,245,0.08)",
       wireframe: false, dragging: false,
     },
     {
@@ -143,7 +144,15 @@ function resolveCollision(a: Body, b: Body) {
   if (!b.dragging) { b.vx += (j / b.mass) * nx; b.vy += (j / b.mass) * ny; }
 }
 
-function drawBody(ctx: CanvasRenderingContext2D, b: Body) {
+function hitTestRect(b: Body, x: number, y: number): boolean {
+  const cos = Math.cos(-b.angle);
+  const sin = Math.sin(-b.angle);
+  const lx = cos * (x - b.x) - sin * (y - b.y);
+  const ly = sin * (x - b.x) + cos * (y - b.y);
+  return Math.abs(lx) <= b.w / 2 && Math.abs(ly) <= b.h / 2;
+}
+
+function drawBody(ctx: CanvasRenderingContext2D, b: Body, gravityOn: boolean) {
   ctx.save();
   ctx.lineWidth = 1.5;
   if (b.type === "circle") {
@@ -177,6 +186,16 @@ function drawBody(ctx: CanvasRenderingContext2D, b: Body) {
     ctx.fill();
     ctx.strokeStyle = b.stroke;
     ctx.stroke();
+
+    if (b.type === "rect") {
+      const label = gravityOn ? "Artron Inhibitor: Off" : "Artron Inhibitor: On";
+      ctx.font = "600 8px 'Space Grotesk', sans-serif";
+      ctx.letterSpacing = "0.12em";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = gravityOn ? "rgba(255,180,180,0.80)" : "rgba(140,220,255,0.80)";
+      ctx.fillText(label.toUpperCase(), 0, 0);
+    }
   }
   ctx.restore();
 }
@@ -186,6 +205,7 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
   const frameRef = useRef<number>(0);
   const bodiesRef = useRef<Body[]>([]);
   const modeRef = useRef<"full" | "small">("full");
+  const gravityRef = useRef<boolean>(false);
   const dragRef = useRef<{
     body: Body | null;
     prevX: number; prevY: number;
@@ -221,9 +241,11 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
       const W = canvas.offsetWidth;
       const H = canvas.offsetHeight;
       const bodies = bodiesRef.current;
+      const gravityOn = gravityRef.current;
 
       for (const b of bodies) {
         if (b.dragging) continue;
+        if (gravityOn) b.vy += GRAVITY * dt;
         b.x += b.vx * dt;
         b.y += b.vy * dt;
         if (b.type !== "circle") b.angle += b.av * dt;
@@ -232,7 +254,7 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
         if (b.x - r < 0)    { b.x = r;     b.vx =  Math.abs(b.vx) * 0.72; }
         if (b.x + r > W)    { b.x = W - r; b.vx = -Math.abs(b.vx) * 0.72; }
         if (b.y - r < 0)    { b.y = r;     b.vy =  Math.abs(b.vy) * 0.72; }
-        if (b.y + r > H)    { b.y = H - r; b.vy = -Math.abs(b.vy) * 0.72; }
+        if (b.y + r > H)    { b.y = H - r; b.vy = -Math.abs(b.vy) * (gravityOn ? 0.60 : 0.72); }
       }
 
       for (let i = 0; i < bodies.length; i++) {
@@ -242,7 +264,7 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
       }
 
       ctx.clearRect(0, 0, W, H);
-      for (const b of bodies) drawBody(ctx, b);
+      for (const b of bodies) drawBody(ctx, b, gravityOn);
 
       frameRef.current = requestAnimationFrame(loop);
     };
@@ -255,6 +277,15 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
 
     const onDown = (e: MouseEvent) => {
       const { x, y } = getXY(e);
+
+      // check if the rect button was clicked
+      for (const b of bodiesRef.current) {
+        if (b.type === "rect" && hitTestRect(b, x, y)) {
+          gravityRef.current = !gravityRef.current;
+          return;
+        }
+      }
+
       for (const b of bodiesRef.current) {
         const dx = b.x - x, dy = b.y - y;
         if (Math.sqrt(dx * dx + dy * dy) <= b.radius) {
