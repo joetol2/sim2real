@@ -5,7 +5,7 @@ interface Body {
   vx: number; vy: number;
   angle: number; av: number;
   radius: number; mass: number;
-  type: "circle" | "square" | "rect";
+  type: "circle" | "square" | "rect" | "triangle";
   w: number; h: number;
   stroke: string; fill: string;
   wireframe: boolean;
@@ -49,6 +49,46 @@ function initBodies(W: number, H: number): Body[] {
       stroke: "rgba(175,215,250,0.70)", fill: "rgba(175,215,250,0.07)",
       wireframe: false, dragging: false,
     },
+    // square 2
+    {
+      x: W * 0.14, y: H * 0.22, vx: 62, vy: 50,
+      angle: 0.8, av: -0.19, radius: 62, mass: 190,
+      type: "square", w: 88, h: 88,
+      stroke: "rgba(200,228,255,0.65)", fill: "rgba(200,228,255,0.07)",
+      wireframe: false, dragging: false,
+    },
+    // square 3
+    {
+      x: W * 0.86, y: H * 0.42, vx: -48, vy: -65,
+      angle: 1.2, av: 0.14, radius: 62, mass: 190,
+      type: "square", w: 88, h: 88,
+      stroke: "rgba(175,215,250,0.65)", fill: "rgba(175,215,250,0.07)",
+      wireframe: false, dragging: false,
+    },
+    // triangle 1
+    {
+      x: W * 0.31, y: H * 0.80, vx: 70, vy: -80,
+      angle: 0.5, av: 0.28, radius: 52, mass: 145,
+      type: "triangle", w: 52, h: 52,
+      stroke: "rgba(220,238,255,0.75)", fill: "rgba(220,238,255,0.07)",
+      wireframe: false, dragging: false,
+    },
+    // triangle 2
+    {
+      x: W * 0.63, y: H * 0.58, vx: -85, vy: 55,
+      angle: 1.0, av: -0.22, radius: 46, mass: 130,
+      type: "triangle", w: 46, h: 46,
+      stroke: "rgba(255,255,255,0.70)", fill: "rgba(255,255,255,0.06)",
+      wireframe: false, dragging: false,
+    },
+    // triangle 3
+    {
+      x: W * 0.48, y: H * 0.12, vx: 55, vy: 90,
+      angle: -0.6, av: 0.20, radius: 50, mass: 140,
+      type: "triangle", w: 50, h: 50,
+      stroke: "rgba(155,205,245,0.75)", fill: "rgba(155,205,245,0.07)",
+      wireframe: false, dragging: false,
+    },
   ];
 }
 
@@ -86,6 +126,21 @@ function drawBody(ctx: CanvasRenderingContext2D, b: Body) {
   if (b.type === "circle") {
     ctx.beginPath();
     ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+    ctx.fillStyle = b.fill;
+    ctx.fill();
+    ctx.strokeStyle = b.stroke;
+    ctx.stroke();
+  } else if (b.type === "triangle") {
+    ctx.translate(b.x, b.y);
+    ctx.rotate(b.angle);
+    ctx.beginPath();
+    for (let i = 0; i < 3; i++) {
+      const a = (i * 2 * Math.PI / 3) - Math.PI / 2;
+      const vx = b.radius * Math.cos(a);
+      const vy = b.radius * Math.sin(a);
+      i === 0 ? ctx.moveTo(vx, vy) : ctx.lineTo(vx, vy);
+    }
+    ctx.closePath();
     ctx.fillStyle = b.fill;
     ctx.fill();
     ctx.strokeStyle = b.stroke;
