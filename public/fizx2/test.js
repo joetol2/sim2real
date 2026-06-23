@@ -11,6 +11,12 @@ function setColor(thing, color) {
   }
 }
 
+function setWireframe(thing) {
+  for (var i = 0; i < thing.atoms.length; i++) {
+    thing.atoms[i].noFill = true;
+  }
+}
+
 function makeRect(name, x, y, cols, rows, res, color) {
   var atomArray = [];
   var t = new thing(name);
@@ -41,7 +47,7 @@ function makeRect(name, x, y, cols, rows, res, color) {
 }
 
 first_run = function() {
-  DAMP = 0.999;
+  DAMP = 1;
   BOND_P = 33;
   BOND_D = 0.5;
   TICK_MAX = 10000000;
@@ -50,14 +56,17 @@ first_run = function() {
   // three circles
   var c1 = new circle("c1", 250, 600, 0, 0, 80, false, false);
   setColor(c1, "rgba(200, 228, 255, 0.88)");
+  setWireframe(c1);
   setVel(c1, 100, 70);
 
   var c2 = new circle("c2", 750, 250, 0, 0, 60, false, false);
   setColor(c2, "rgba(255, 255, 255, 0.82)");
+  setWireframe(c2);
   setVel(c2, -80, -60);
 
   var c3 = new circle("c3", 1060, 700, 0, 0, 70, false, false);
   setColor(c3, "rgba(155, 205, 245, 0.88)");
+  setWireframe(c3);
   setVel(c3, -90, 105);
 
   // square

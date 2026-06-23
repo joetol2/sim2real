@@ -15,15 +15,17 @@ display_init = function() {
   HEIGHT = g_canvas.height;
 }
 
-display_circle = function(x, y, r, color) {
+display_circle = function(x, y, r, color, noFill) {
   g_context.beginPath();
   var strokeTh = Math.min(r, 1.5);
   g_context.lineWidth = strokeTh;
   g_context.arc(x, HEIGHT - 1 - y, r - strokeTh / 2, 0, Math.PI * 2);
   var c = color || ATOM_COLOR;
   g_context.strokeStyle = c;
-  g_context.fillStyle = c;
-  g_context.fill();
+  if (!noFill) {
+    g_context.fillStyle = c;
+    g_context.fill();
+  }
   g_context.stroke();
   g_context.lineWidth = 1;
 }

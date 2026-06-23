@@ -80,7 +80,7 @@ atom = function(x, y, vx, vy, radius, locked, layer, color) {
   };
 }
 atom.prototype.draw = function() {
-  display_circle(this.p.x, this.p.y, this.radius, this.color);
+  display_circle(this.p.x, this.p.y, this.radius, this.color, this.noFill);
 };
 atom.prototype.applyForce = function() {
   var vDist = Math.sqrt(Math.pow(this.v.x, 2) + Math.pow(this.v.y, 2));

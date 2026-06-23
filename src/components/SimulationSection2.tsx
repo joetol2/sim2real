@@ -42,7 +42,7 @@ function SimCanvas2() {
       });
 
     const base = import.meta.env.BASE_URL;
-    const v = "2";
+    const v = "3";
     const scripts = [
       `${base}fizx2/fizx.js?v=${v}`,
       `${base}fizx2/ball16.js?v=${v}`,
