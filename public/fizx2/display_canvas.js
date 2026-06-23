@@ -1,11 +1,11 @@
 /*
- * simple API to display, canvas implementation
+ * simple API to display, canvas implementation — transparent background version
  */
 
-BOND_COLOR = "#a0c8e8";
-ATOM_COLOR = "#c8e8ff";
-ATOM_COLOR2 = "#90c4e4";
-CONTACT_COLOR = "#b8a0f0";
+BOND_COLOR = "rgba(155, 205, 245, 0.40)";
+ATOM_COLOR = "rgba(200, 228, 255, 0.88)";
+ATOM_COLOR2 = "rgba(155, 195, 230, 0.88)";
+CONTACT_COLOR = "rgba(180, 160, 240, 0.55)";
 
 display_init = function() {
   g_canvas = document.getElementById("canvas");
@@ -17,46 +17,31 @@ display_init = function() {
 
 display_circle = function(x, y, r, color) {
   g_context.beginPath();
-  var strokeTh=Math.min(r,2);
-  g_context.lineWidth=strokeTh;
-  g_context.arc(x, HEIGHT-1-y, r-strokeTh/2, 0, Math.PI*2);
-  if(color) {
-    g_context.strokeStyle = color;
-  } else {
-    g_context.strokeStyle = "#000000";
-  }
-  g_context.fillStyle = g_context.strokeStyle;
+  var strokeTh = Math.min(r, 1.5);
+  g_context.lineWidth = strokeTh;
+  g_context.arc(x, HEIGHT - 1 - y, r - strokeTh / 2, 0, Math.PI * 2);
+  var c = color || ATOM_COLOR;
+  g_context.strokeStyle = c;
+  g_context.fillStyle = c;
+  g_context.fill();
   g_context.stroke();
-  g_context.lineWidth=1;
+  g_context.lineWidth = 1;
 }
 
-display_line = function(x, y, x2, y2, color,w) {
-    if(!(w>0)){
-        w=1;
-    }
+display_line = function(x, y, x2, y2, color, w) {
+  if (!(w > 0)) w = 1;
   g_context.beginPath();
-  var old=g_context.lineWidth;
-  g_context.lineWidth=w;
-  g_context.moveTo(x, HEIGHT-1-y);
-  g_context.lineTo(x2, HEIGHT-1-y2);
-  if(color) {
-    g_context.strokeStyle = color;
-  } else {
-    g_context.strokeStyle = "#000000";
-  }
+  var old = g_context.lineWidth;
+  g_context.lineWidth = w;
+  g_context.moveTo(x, HEIGHT - 1 - y);
+  g_context.lineTo(x2, HEIGHT - 1 - y2);
+  g_context.strokeStyle = color || BOND_COLOR;
   g_context.stroke();
-  g_context.lineWidth=old;
+  g_context.lineWidth = old;
 }
 
 display_clear = function() {
-  // Vertical gradient: near-black at top (deep space/distance),
-  // lightening toward the bottom (foreground/surface) for a 3D depth effect
-  var grad = g_context.createLinearGradient(0, 0, 0, HEIGHT);
-  grad.addColorStop(0,    "#010e20"); // top — very dark, deep space
-  grad.addColorStop(0.45, "#013575"); // mid — site's dark blue
-  grad.addColorStop(1,    "#1f7bc8"); // bottom — lighter blue, foreground
-  g_context.fillStyle = grad;
-  g_context.fillRect(0, 0, WIDTH, HEIGHT);
+  g_context.clearRect(0, 0, WIDTH, HEIGHT);
 }
 
 display_iterate = function(cb, cb2, sec, max) {
@@ -68,5 +53,5 @@ display_iterate = function(cb, cb2, sec, max) {
     } else {
       cb();
     }
-  }, sec)
+  }, sec);
 }

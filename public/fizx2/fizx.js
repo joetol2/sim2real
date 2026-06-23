@@ -1,4 +1,4 @@
-var GRAVITY = -1000
+var GRAVITY = 0
 var RADIUS = 25;
 var RADIUS_SHOW = 1;
 var TICK_PHYS = 0.001;

@@ -42,7 +42,7 @@ function SimCanvas2() {
       });
 
     const base = import.meta.env.BASE_URL;
-    const v = "1";
+    const v = "2";
     const scripts = [
       `${base}fizx2/fizx.js?v=${v}`,
       `${base}fizx2/ball16.js?v=${v}`,
@@ -104,7 +104,7 @@ function SimCanvas2() {
         id="canvas"
         width={CANVAS_W}
         height={CANVAS_H}
-        style={{ transformOrigin: "top left", display: "block" }}
+        style={{ transformOrigin: "top left", display: "block", background: "transparent" }}
         onMouseMove={handleMouseMove}
         onMouseDown={() => { const w = window as any; if (w.nmouse) w.nmouse.d = true; }}
         onMouseUp={() => { const w = window as any; if (w.nmouse) w.nmouse.d = false; }}
