@@ -104,11 +104,8 @@ const SeeItInAction = () => (
     <PageNav />
 
     {/* Hero */}
-    <section className="relative py-20 sm:py-28 px-8 sm:px-12 lg:px-20 overflow-hidden" style={{ minHeight: "380px" }}>
-      <div className="absolute inset-0">
-        <PhysicsBackground height="100%" />
-      </div>
-      <div className="relative z-10 max-w-4xl">
+    <section className="py-20 sm:py-28 px-8 sm:px-12 lg:px-20">
+      <div className="max-w-4xl">
         <p className="text-sm font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">Results</p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-semibold tracking-tight leading-[1.1] mb-6">
           See it in action
@@ -125,8 +122,11 @@ const SeeItInAction = () => (
     ))}
 
     {/* Drone link */}
-    <section className="py-16 border-t border-border" style={{ backgroundColor: '#012b62' }}>
-      <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-20 text-center">
+    <section className="relative border-t border-border overflow-hidden" style={{ backgroundColor: '#012b62', minHeight: "320px" }}>
+      <div className="absolute inset-0">
+        <PhysicsBackground height="100%" />
+      </div>
+      <div className="relative z-10 flex items-center justify-center" style={{ minHeight: "320px" }}>
         <Link
           to="/drone"
           className="text-sm font-heading tracking-[0.2em] uppercase text-white/60 hover:text-white/90 transition-colors duration-200"
