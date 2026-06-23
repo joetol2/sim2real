@@ -122,11 +122,11 @@ const SeeItInAction = () => (
     ))}
 
     {/* Drone link */}
-    <section className="relative border-t border-border overflow-hidden" style={{ backgroundColor: '#012b62', minHeight: "520px" }}>
+    <section className="relative border-t border-border overflow-hidden" style={{ backgroundColor: '#012b62', minHeight: "500px" }}>
       <div className="absolute inset-0">
         <PhysicsBackground height="100%" />
       </div>
-      <div className="relative z-10 flex items-center justify-center" style={{ minHeight: "520px" }}>
+      <div className="relative z-10 flex items-center justify-center" style={{ minHeight: "500px" }}>
         <Link
           to="/drone"
           className="text-base font-heading tracking-[0.2em] uppercase text-white/60 hover:text-white/90 transition-colors duration-200"
