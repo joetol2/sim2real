@@ -5,12 +5,6 @@ function setVel(thing, vx, vy) {
   }
 }
 
-function setColor(thing, color) {
-  for (var i = 0; i < thing.atoms.length; i++) {
-    thing.atoms[i].color = color;
-  }
-}
-
 function setWireframe(thing) {
   for (var i = 0; i < thing.atoms.length; i++) {
     thing.atoms[i].noFill = true;
@@ -48,38 +42,38 @@ function makeRect(name, x, y, cols, rows, res, color) {
 
 first_run = function() {
   DAMP = 1;
-  BOND_P = 33;
-  BOND_D = 0.5;
-  CONTACT_P = 300;
-  CONTACT_D = 8;
-  CONTACT_R = 0.3;
+  BOND_P = 80;
+  BOND_D = 1.0;
+  CONTACT_P = 60;
+  CONTACT_D = 25;
+  CONTACT_R = 0.08;
   TICK_MAX = 10000000;
   display_init();
 
-  // three circles
-  var c1 = new circle("c1", 250, 600, 0, 0, 80, false, false);
-  setColor(c1, "rgba(200, 228, 255, 0.88)");
-  setWireframe(c1);
-  setVel(c1, 100, 70);
+  // balls as single atoms — one contact point each, no spin possible
+  var b1 = new atom(250, 620, 80, 55, 75, false, null, "rgba(200, 228, 255, 0.88)");
+  b1.noFill = true;
+  b1.mass = 180;
+  ATOMS.push(b1);
 
-  var c2 = new circle("c2", 750, 250, 0, 0, 60, false, false);
-  setColor(c2, "rgba(255, 255, 255, 0.82)");
-  setWireframe(c2);
-  setVel(c2, -80, -60);
+  var b2 = new atom(750, 260, -65, -50, 58, false, null, "rgba(255, 255, 255, 0.82)");
+  b2.noFill = true;
+  b2.mass = 135;
+  ATOMS.push(b2);
 
-  var c3 = new circle("c3", 1060, 700, 0, 0, 70, false, false);
-  setColor(c3, "rgba(155, 205, 245, 0.88)");
-  setWireframe(c3);
-  setVel(c3, -90, 105);
+  var b3 = new atom(1060, 700, -70, 88, 68, false, null, "rgba(155, 205, 245, 0.88)");
+  b3.noFill = true;
+  b3.mass = 160;
+  ATOMS.push(b3);
 
-  // square
-  var sq = new square("sq", 550, 450, 50, -80, 72, 12, false, null, "rgba(220, 238, 255, 0.80)");
+  // square — small atom radii to limit multi-contact pile-up
+  var sq = new square("sq", 540, 440, 38, -55, 72, 12, false, null, "rgba(220, 238, 255, 0.80)");
+  for (var i = 0; i < sq.atoms.length; i++) sq.atoms[i].radius = 3;
 
-  // rectangle (wider than tall)
-  var rect = makeRect("rect", 920, 210, 9, 4, 18, "rgba(175, 215, 250, 0.82)");
-  setVel(rect, -65, 85);
-
-  collide_all([c1, c2, c3, sq, rect]);
+  // rectangle — same treatment
+  var rect = makeRect("rect", 910, 215, 9, 4, 18, "rgba(175, 215, 250, 0.82)");
+  for (var i = 0; i < rect.atoms.length; i++) rect.atoms[i].radius = 3;
+  setVel(rect, -55, 70);
 
   display_clear();
   bonds_draw();
@@ -90,15 +84,15 @@ first_run = function() {
     bonds_draw();
     atoms_draw();
 
-    // boundary bounce — push atoms back when they reach the edge
+    // soft boundary bounce
     for (var i = 0; i < ATOMS.length; i++) {
       var a = ATOMS[i];
       if (!a.locked && !a.beingDragged) {
         var m = a.radius + 4;
-        if (a.p.x < m)         { a.v.x =  Math.abs(a.v.x) * 0.85; a.p.x = m; }
-        if (a.p.x > WIDTH - m) { a.v.x = -Math.abs(a.v.x) * 0.85; a.p.x = WIDTH - m; }
-        if (a.p.y < m)         { a.v.y =  Math.abs(a.v.y) * 0.85; a.p.y = m; }
-        if (a.p.y > HEIGHT - m){ a.v.y = -Math.abs(a.v.y) * 0.85; a.p.y = HEIGHT - m; }
+        if (a.p.x < m)           { a.v.x =  Math.abs(a.v.x) * 0.85; a.p.x = m; }
+        if (a.p.x > WIDTH - m)   { a.v.x = -Math.abs(a.v.x) * 0.85; a.p.x = WIDTH - m; }
+        if (a.p.y < m)           { a.v.y =  Math.abs(a.v.y) * 0.85; a.p.y = m; }
+        if (a.p.y > HEIGHT - m)  { a.v.y = -Math.abs(a.v.y) * 0.85; a.p.y = HEIGHT - m; }
       }
     }
 
