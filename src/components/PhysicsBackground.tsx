@@ -188,13 +188,22 @@ function drawBody(ctx: CanvasRenderingContext2D, b: Body, gravityOn: boolean) {
     ctx.stroke();
 
     if (b.type === "rect") {
-      const label = gravityOn ? "Artron Inhibitor: Off" : "Artron Inhibitor: On";
-      ctx.font = "600 8px 'Space Grotesk', sans-serif";
-      ctx.letterSpacing = "0.12em";
+      // tint the rect fill green (on) or red (off)
+      ctx.beginPath();
+      ctx.rect(-b.w / 2, -b.h / 2, b.w, b.h);
+      ctx.fillStyle = gravityOn
+        ? "rgba(255,100,100,0.18)"
+        : "rgba(80,220,140,0.18)";
+      ctx.fill();
+
+      ctx.font = "700 9px 'Space Grotesk', sans-serif";
+      ctx.letterSpacing = "0.10em";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillStyle = gravityOn ? "rgba(255,180,180,0.80)" : "rgba(140,220,255,0.80)";
-      ctx.fillText(label.toUpperCase(), 0, 0);
+      ctx.fillStyle = gravityOn ? "rgba(255,160,160,0.90)" : "rgba(120,240,180,0.90)";
+      ctx.fillText("ARTRON INHIBITOR:", 0, -7);
+      ctx.font = "700 11px 'Space Grotesk', sans-serif";
+      ctx.fillText(gravityOn ? "OFF" : "ON", 0, 7);
     }
   }
   ctx.restore();
