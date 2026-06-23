@@ -63,8 +63,8 @@ function DemoSection({ video, label, title, stat, statLabel, body, index }: {
   const flip = index % 2 === 1;
   return (
     <Section dark={flip}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-        <div className={flip ? "lg:order-2" : ""}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className={flip ? "md:order-2" : ""}>
           <video
             ref={videoRef}
             src={video}
@@ -84,7 +84,7 @@ function DemoSection({ video, label, title, stat, statLabel, body, index }: {
             <span className="text-xs text-white/40">playback in real time</span>
           </div>
         </div>
-        <div className={flip ? "lg:order-1" : ""}>
+        <div className={flip ? "md:order-1" : ""}>
           <p className="text-xs font-heading tracking-[0.3em] uppercase text-muted-foreground mb-4">{label}</p>
           <h2 className="text-2xl sm:text-3xl font-heading font-semibold tracking-tight leading-[1.15] mb-6">{title}</h2>
           <div className="mb-6">
