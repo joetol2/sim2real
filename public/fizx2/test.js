@@ -50,6 +50,9 @@ first_run = function() {
   DAMP = 1;
   BOND_P = 33;
   BOND_D = 0.5;
+  CONTACT_P = 300;
+  CONTACT_D = 8;
+  CONTACT_R = 0.3;
   TICK_MAX = 10000000;
   display_init();
 

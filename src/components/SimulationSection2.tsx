@@ -42,7 +42,7 @@ function SimCanvas2() {
       });
 
     const base = import.meta.env.BASE_URL;
-    const v = "3";
+    const v = "4";
     const scripts = [
       `${base}fizx2/fizx.js?v=${v}`,
       `${base}fizx2/ball16.js?v=${v}`,
@@ -117,26 +117,17 @@ const SimulationSection2 = () => {
   const [resetKey, setResetKey] = useState(0);
 
   return (
-    <section className="py-24 sm:py-32 border-t border-border">
-      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20">
-        <p className="text-base font-heading tracking-[0.3em] uppercase text-muted-foreground mb-6">
-          Physics simulation
-        </p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold tracking-tight leading-[1.15] mb-10">
-          Soft-body dynamics in the browser.
-        </h2>
-        <SimCanvas2 key={resetKey} />
-        <div className="flex items-center justify-between mt-4">
-          <p className="text-sm text-muted-foreground">
-            Drag objects to interact.
-          </p>
-          <button
-            onClick={() => setResetKey(k => k + 1)}
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 ml-4 shrink-0"
-          >
-            Reset
-          </button>
-        </div>
+    <section className="border-t border-border">
+      {/* canvas spans full width — no max-w constraint */}
+      <SimCanvas2 key={resetKey} />
+      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 py-4 flex items-center justify-between">
+        <p className="text-sm text-muted-foreground">Drag objects to interact.</p>
+        <button
+          onClick={() => setResetKey(k => k + 1)}
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 ml-4 shrink-0"
+        >
+          Reset
+        </button>
       </div>
     </section>
   );
