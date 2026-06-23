@@ -12,76 +12,106 @@ interface Body {
   dragging: boolean;
 }
 
+const BREAKPOINT = 768;
+
 function initBodies(W: number, H: number): Body[] {
+  const small = W < BREAKPOINT;
+
+  if (small) {
+    return [
+      {
+        x: W * 0.22, y: H * 0.50, vx: 75, vy: 55,
+        angle: 0, av: 0, radius: 44, mass: 130,
+        type: "circle", w: 44, h: 44,
+        stroke: "rgba(120,185,240,0.38)", fill: "rgba(120,185,240,0.03)",
+        wireframe: true, dragging: false,
+      },
+      {
+        x: W * 0.70, y: H * 0.35, vx: -60, vy: -50,
+        angle: 0.3, av: 0.18, radius: 48, mass: 150,
+        type: "square", w: 68, h: 68,
+        stroke: "rgba(100,170,230,0.34)", fill: "rgba(100,170,230,0.03)",
+        wireframe: false, dragging: false,
+      },
+      {
+        x: W * 0.50, y: H * 0.75, vx: 55, vy: -65,
+        angle: 0.5, av: 0.22, radius: 44, mass: 125,
+        type: "triangle", w: 44, h: 44,
+        stroke: "rgba(140,200,245,0.36)", fill: "rgba(140,200,245,0.03)",
+        wireframe: false, dragging: false,
+      },
+    ];
+  }
+
   return [
     {
       x: W * 0.19, y: H * 0.62, vx: 95, vy: 60,
       angle: 0, av: 0, radius: 58, mass: 170,
       type: "circle", w: 58, h: 58,
-      stroke: "rgba(200,228,255,0.78)", fill: "rgba(200,228,255,0.04)",
+      stroke: "rgba(120,185,240,0.42)", fill: "rgba(120,185,240,0.03)",
       wireframe: true, dragging: false,
     },
     {
       x: W * 0.57, y: H * 0.28, vx: -70, vy: -55,
       angle: 0, av: 0, radius: 44, mass: 125,
       type: "circle", w: 44, h: 44,
-      stroke: "rgba(255,255,255,0.72)", fill: "rgba(255,255,255,0.03)",
+      stroke: "rgba(180,215,250,0.36)", fill: "rgba(180,215,250,0.02)",
       wireframe: true, dragging: false,
     },
     {
       x: W * 0.81, y: H * 0.68, vx: -75, vy: 90,
       angle: 0, av: 0, radius: 52, mass: 150,
       type: "circle", w: 52, h: 52,
-      stroke: "rgba(155,205,245,0.78)", fill: "rgba(155,205,245,0.04)",
+      stroke: "rgba(100,170,230,0.40)", fill: "rgba(100,170,230,0.03)",
       wireframe: true, dragging: false,
     },
     {
       x: W * 0.40, y: H * 0.45, vx: 45, vy: -58,
       angle: 0.3, av: 0.22, radius: 62, mass: 190,
       type: "square", w: 88, h: 88,
-      stroke: "rgba(220,238,255,0.60)", fill: "rgba(220,238,255,0.05)",
+      stroke: "rgba(100,170,230,0.34)", fill: "rgba(100,170,230,0.03)",
       wireframe: false, dragging: false,
     },
     {
       x: W * 0.71, y: H * 0.22, vx: -58, vy: 72,
       angle: -0.2, av: -0.16, radius: 71, mass: 210,
       type: "rect", w: 128, h: 62,
-      stroke: "rgba(175,215,250,0.60)", fill: "rgba(175,215,250,0.05)",
+      stroke: "rgba(140,195,245,0.32)", fill: "rgba(140,195,245,0.03)",
       wireframe: false, dragging: false,
     },
     {
       x: W * 0.14, y: H * 0.22, vx: 62, vy: 50,
       angle: 0.8, av: -0.19, radius: 62, mass: 190,
       type: "square", w: 88, h: 88,
-      stroke: "rgba(200,228,255,0.55)", fill: "rgba(200,228,255,0.05)",
+      stroke: "rgba(160,210,250,0.30)", fill: "rgba(160,210,250,0.03)",
       wireframe: false, dragging: false,
     },
     {
       x: W * 0.86, y: H * 0.42, vx: -48, vy: -65,
       angle: 1.2, av: 0.14, radius: 62, mass: 190,
       type: "square", w: 88, h: 88,
-      stroke: "rgba(175,215,250,0.55)", fill: "rgba(175,215,250,0.05)",
+      stroke: "rgba(120,185,240,0.30)", fill: "rgba(120,185,240,0.03)",
       wireframe: false, dragging: false,
     },
     {
       x: W * 0.31, y: H * 0.80, vx: 70, vy: -80,
       angle: 0.5, av: 0.28, radius: 52, mass: 145,
       type: "triangle", w: 52, h: 52,
-      stroke: "rgba(220,238,255,0.65)", fill: "rgba(220,238,255,0.05)",
+      stroke: "rgba(100,170,230,0.36)", fill: "rgba(100,170,230,0.03)",
       wireframe: false, dragging: false,
     },
     {
       x: W * 0.63, y: H * 0.58, vx: -85, vy: 55,
       angle: 1.0, av: -0.22, radius: 46, mass: 130,
       type: "triangle", w: 46, h: 46,
-      stroke: "rgba(255,255,255,0.60)", fill: "rgba(255,255,255,0.04)",
+      stroke: "rgba(180,215,250,0.32)", fill: "rgba(180,215,250,0.02)",
       wireframe: false, dragging: false,
     },
     {
       x: W * 0.48, y: H * 0.12, vx: 55, vy: 90,
       angle: -0.6, av: 0.20, radius: 50, mass: 140,
       type: "triangle", w: 50, h: 50,
-      stroke: "rgba(155,205,245,0.65)", fill: "rgba(155,205,245,0.05)",
+      stroke: "rgba(140,200,245,0.34)", fill: "rgba(140,200,245,0.03)",
       wireframe: false, dragging: false,
     },
   ];
@@ -155,6 +185,7 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const frameRef = useRef<number>(0);
   const bodiesRef = useRef<Body[]>([]);
+  const modeRef = useRef<"full" | "small">("full");
   const dragRef = useRef<{
     body: Body | null;
     prevX: number; prevY: number;
@@ -177,7 +208,9 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
     };
     setSize();
 
-    bodiesRef.current = initBodies(canvas.offsetWidth, canvas.offsetHeight);
+    const W = canvas.offsetWidth;
+    modeRef.current = W < BREAKPOINT ? "small" : "full";
+    bodiesRef.current = initBodies(W, canvas.offsetHeight);
 
     let lastTime = performance.now();
 
@@ -267,6 +300,13 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
       ctx.scale(dpr, dpr);
+
+      const W = canvas.offsetWidth;
+      const newMode = W < BREAKPOINT ? "small" : "full";
+      if (newMode !== modeRef.current) {
+        modeRef.current = newMode;
+        bodiesRef.current = initBodies(W, canvas.offsetHeight);
+      }
     });
     ro.observe(canvas);
 
