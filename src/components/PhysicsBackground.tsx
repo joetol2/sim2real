@@ -201,7 +201,7 @@ function drawBody(ctx: CanvasRenderingContext2D, b: Body, gravityOn: boolean) {
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = gravityOn ? "rgba(255,160,160,0.90)" : "rgba(120,240,180,0.90)";
-      ctx.fillText("ARTRON INHIBITOR:", 0, -7);
+      ctx.fillText("ARTRON INHIBITOR", 0, -7);
       ctx.font = "700 11px 'Space Grotesk', sans-serif";
       ctx.fillText(gravityOn ? "OFF" : "ON", 0, 7);
     }
