@@ -291,8 +291,8 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
       dragRef.current.body = null;
     };
 
-    canvas.addEventListener("mousedown", onDown);
-    canvas.addEventListener("mousemove", onMove);
+    window.addEventListener("mousedown", onDown);
+    window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseup", onUp);
 
     const ro = new ResizeObserver(() => {
@@ -312,8 +312,8 @@ export default function PhysicsBackground({ height = "520px" }: { height?: strin
 
     return () => {
       cancelAnimationFrame(frameRef.current);
-      canvas.removeEventListener("mousedown", onDown);
-      canvas.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mousedown", onDown);
+      window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseup", onUp);
       ro.disconnect();
     };
