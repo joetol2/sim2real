@@ -101,7 +101,7 @@ function SimCanvas2() {
     >
       <canvas
         ref={canvasRef}
-        id="canvas2"
+        id="canvas"
         width={CANVAS_W}
         height={CANVAS_H}
         style={{ transformOrigin: "top left", display: "block" }}
