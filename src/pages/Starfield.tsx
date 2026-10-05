@@ -92,7 +92,7 @@ const SpeedField = ({ settings }: { settings: Settings }) => {
       canvas.dataset.motion = reduce.matches ? "reduced" : "active";
 
       // Translucent clear leaves motion trails behind each star.
-      ctx.fillStyle = `rgba(5,6,10,${trail})`;
+      ctx.fillStyle = `rgba(1,43,98,${trail})`;
       ctx.fillRect(0, 0, w, h);
 
       const rgb = hexToRgb(color);
@@ -213,7 +213,7 @@ const Starfield = () => {
     setSettings((s) => ({ ...s, [key]: v }));
 
   return (
-    <main className="min-h-screen bg-[#05060a] text-white">
+    <main className="min-h-screen bg-[#012b62] text-white">
       <header className="relative flex h-[70vh] items-center justify-center overflow-hidden">
         <SpeedField settings={settings} />
         <div className="relative text-center">
