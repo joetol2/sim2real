@@ -10,6 +10,7 @@ type Settings = {
   fov: number;
   trail: number; // 0 = long trails, 1 = no trails
   color: string;
+  followMouse: boolean;
 };
 
 const DEFAULTS: Settings = {
@@ -18,7 +19,11 @@ const DEFAULTS: Settings = {
   fov: 128,
   trail: 0.35,
   color: "#c8dcff",
+  followMouse: true,
 };
+
+// How quickly the center eases toward its target each frame (0-1).
+const CENTER_EASE = 0.08;
 
 type Star = { x: number; y: number; z: number; pz: number };
 
@@ -44,6 +49,11 @@ const SpeedField = ({ settings }: { settings: Settings }) => {
     const stars: Star[] = [];
     let running = true;
     let raf = 0;
+    // Vanishing point the stars fly out of, and where it's easing toward.
+    // null target = no pointer over the header, so ease back to the middle.
+    let cx = 0;
+    let cy = 0;
+    let target: { x: number; y: number } | null = null;
 
     const spawn = (s: Star = { x: 0, y: 0, z: 0, pz: 0 }) => {
       s.x = (Math.random() - 0.5) * w;
@@ -60,10 +70,19 @@ const SpeedField = ({ settings }: { settings: Settings }) => {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (!target) {
+        cx = w / 2;
+        cy = h / 2;
+      }
     };
 
     const frame = () => {
-      const { starCount, speed, fov, trail, color } = settingsRef.current;
+      const { starCount, speed, fov, trail, color, followMouse } = settingsRef.current;
+
+      const tx = followMouse && target ? target.x : w / 2;
+      const ty = followMouse && target ? target.y : h / 2;
+      cx += (tx - cx) * CENTER_EASE;
+      cy += (ty - cy) * CENTER_EASE;
 
       // Keep the star pool in sync with the slider.
       while (stars.length < starCount) stars.push(spawn());
@@ -88,10 +107,10 @@ const SpeedField = ({ settings }: { settings: Settings }) => {
 
         const k = fov / s.z;
         const pk = fov / s.pz;
-        const x = s.x * k + w / 2;
-        const y = s.y * k + h / 2;
-        const px = s.x * pk + w / 2;
-        const py = s.y * pk + h / 2;
+        const x = s.x * k + cx;
+        const y = s.y * k + cy;
+        const px = s.x * pk + cx;
+        const py = s.y * pk + cy;
         if (x < 0 || x > w || y < 0 || y > h) {
           spawn(s);
           continue;
@@ -121,10 +140,24 @@ const SpeedField = ({ settings }: { settings: Settings }) => {
     });
     io.observe(canvas);
 
+    // Track the pointer over the whole header (the title sits above the canvas).
+    const area = canvas.parentElement ?? canvas;
+    const onMove = (e: PointerEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      target = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
+    const onLeave = () => {
+      target = null;
+    };
+    area.addEventListener("pointermove", onMove);
+    area.addEventListener("pointerleave", onLeave);
+
     raf = requestAnimationFrame(frame);
 
     return () => {
       running = false;
+      area.removeEventListener("pointermove", onMove);
+      area.removeEventListener("pointerleave", onLeave);
       cancelAnimationFrame(raf);
       ro.disconnect();
       io.disconnect();
@@ -202,6 +235,15 @@ const Starfield = () => {
             onChange={(e) => set("color")(e.target.value)}
             className="h-8 w-14 cursor-pointer rounded bg-transparent"
           />
+        </label>
+        <label className="flex items-center gap-2 text-xs text-white/70">
+          <input
+            type="checkbox"
+            checked={settings.followMouse}
+            onChange={(e) => set("followMouse")(e.target.checked)}
+            className="h-4 w-4 accent-white"
+          />
+          <span>Center follows mouse</span>
         </label>
         <button
           onClick={() => setSettings(DEFAULTS)}
