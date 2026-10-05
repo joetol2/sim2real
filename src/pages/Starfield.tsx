@@ -14,10 +14,10 @@ type Settings = {
 };
 
 const DEFAULTS: Settings = {
-  starCount: 200,
-  speed: 8,
-  fov: 128,
-  trail: 0.35,
+  starCount: 220,
+  speed: 6.5,
+  fov: 266,
+  trail: 0.14,
   color: "#c8dcff",
   followMouse: true,
 };
@@ -217,8 +217,8 @@ const Starfield = () => {
       <header className="relative flex h-[70vh] items-center justify-center overflow-hidden">
         <SpeedField settings={settings} />
         <div className="relative text-center">
-          <h1 className="text-5xl font-bold tracking-tight md:text-7xl">Starfield</h1>
-          <p className="mt-4 text-white/60">Sandbox — play with the controls below</p>
+          <h1 className="text-2xl font-bold tracking-tight md:text-4xl">Starfield</h1>
+          <p className="mt-2 text-[0.5rem] text-white/60">Play with the controls below</p>
         </div>
       </header>
 
