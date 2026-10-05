@@ -15,6 +15,7 @@ import Press from "./pages/Press.tsx";
 import SeeItInAction from "./pages/SeeItInAction.tsx";
 import Drone from "./pages/Drone.tsx";
 import Physics2 from "./pages/Physics2.tsx";
+import Starfield from "./pages/Starfield.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -40,6 +41,8 @@ const App = () => (
           <Route path="/see-it-in-action" element={<SeeItInAction />} />
           <Route path="/drone" element={<Drone />} />
           <Route path="/physics2" element={<Physics2 />} />
+          {/* Sandbox page — intentionally not linked from anywhere */}
+          <Route path="/starfield" element={<Starfield />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
