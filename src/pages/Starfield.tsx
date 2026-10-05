@@ -213,7 +213,7 @@ const Starfield = () => {
     setSettings((s) => ({ ...s, [key]: v }));
 
   return (
-    <main className="min-h-screen text-white" style={{ backgroundColor: "#012b62" }}>
+    <main className="min-h-screen bg-[#05060a] text-white">
       <header className="relative flex h-[70vh] items-center justify-center overflow-hidden">
         <SpeedField settings={settings} />
         <div className="relative text-center">
