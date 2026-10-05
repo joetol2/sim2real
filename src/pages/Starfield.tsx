@@ -15,9 +15,9 @@ type Settings = {
 
 const DEFAULTS: Settings = {
   starCount: 220,
-  speed: 6.5,
+  speed: 1.5,
   fov: 266,
-  trail: 0.14,
+  trail: 0.11,
   color: "#c8dcff",
   followMouse: true,
 };
