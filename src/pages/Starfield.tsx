@@ -149,15 +149,25 @@ const SpeedField = ({ settings }: { settings: Settings }) => {
     const onLeave = () => {
       target = null;
     };
+    // Touch: steer while the finger is down, ease back to center on release.
+    const onUp = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") target = null;
+    };
+    area.addEventListener("pointerdown", onMove);
     area.addEventListener("pointermove", onMove);
     area.addEventListener("pointerleave", onLeave);
+    area.addEventListener("pointerup", onUp);
+    area.addEventListener("pointercancel", onLeave);
 
     raf = requestAnimationFrame(frame);
 
     return () => {
       running = false;
+      area.removeEventListener("pointerdown", onMove);
       area.removeEventListener("pointermove", onMove);
       area.removeEventListener("pointerleave", onLeave);
+      area.removeEventListener("pointerup", onUp);
+      area.removeEventListener("pointercancel", onLeave);
       cancelAnimationFrame(raf);
       ro.disconnect();
       io.disconnect();
@@ -214,7 +224,8 @@ const Starfield = () => {
 
   return (
     <main className="min-h-screen bg-[#05060a] text-white">
-      <header className="relative flex h-[70vh] items-center justify-center overflow-hidden">
+      {/* touch-none: dragging on the field steers the stars instead of scrolling the page */}
+      <header className="relative flex h-[70vh] touch-none select-none items-center justify-center overflow-hidden">
         <SpeedField settings={settings} />
         <div className="relative text-center">
           <h1 className="text-2xl font-bold tracking-tight md:text-4xl">Starfield</h1>
