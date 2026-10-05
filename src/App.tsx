@@ -17,6 +17,7 @@ import Drone from "./pages/Drone.tsx";
 import Physics2 from "./pages/Physics2.tsx";
 import Starfield from "./pages/Starfield.tsx";
 import Blocks from "./pages/Blocks.tsx";
+import Swarm from "./pages/Swarm.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -45,6 +46,7 @@ const App = () => (
           {/* Sandbox page — intentionally not linked from anywhere */}
           <Route path="/starfield" element={<Starfield />} />
           <Route path="/blocks" element={<Blocks />} />
+          <Route path="/swarm" element={<Swarm />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
