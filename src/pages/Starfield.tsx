@@ -222,7 +222,7 @@ const Starfield = () => {
         </div>
       </header>
 
-      <section>
+      <section className="border-t">
         <div className="mx-auto grid max-w-3xl gap-6 px-4 py-10 sm:grid-cols-2">
           <Slider label="Stars" value={settings.starCount} min={0} max={2000} step={10} onChange={set("starCount")} />
           <Slider label="Speed" value={settings.speed} min={0} max={40} step={0.5} onChange={set("speed")} />
