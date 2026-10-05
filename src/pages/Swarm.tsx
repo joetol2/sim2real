@@ -48,6 +48,7 @@ type Game = {
   bullets: Vec[];
   ebullets: { x: number; y: number; vx: number; vy: number }[];
   parts: { x: number; y: number; vx: number; vy: number; life: number; color: string }[];
+  words: { text: string; x: number; y: number; life: number; color: string }[];
   stars: { x: number; y: number; v: number; c: string; p: number }[];
   player: {
     x: number;
@@ -247,6 +248,10 @@ const kindForRow = (row: number): Kind => (row === 0 ? "boss" : row <= 2 ? "fly"
 // Points: in formation / while diving.
 const POINTS: Record<Kind, [number, number]> = { bee: [50, 100], fly: [80, 160], boss: [150, 400] };
 
+// A random one of these pops up and fades out whenever an alien explodes.
+const POP_WORDS = ["Ange", "Jenn", "Jackie", "Creo"];
+const POP_LIFE = 1; // seconds
+
 const rnd = (a: number, b: number) => a + Math.random() * (b - a);
 const clampX = (x: number) => Math.max(10, Math.min(W - 10, x));
 
@@ -312,6 +317,7 @@ const newGame = (): Game => ({
   bullets: [],
   ebullets: [],
   parts: [],
+  words: [],
   stars: makeStars(),
   player: { x: W / 2, state: "alive", dual: false, respawnT: 0, invuln: 1.5, cooldown: 0 },
   rescue: null,
@@ -521,6 +527,11 @@ const Swarm = () => {
       const colors =
         e.kind === "bee" ? ["#facc15", "#3b82f6", "#ffffff"] : e.kind === "fly" ? ["#ef4444", "#ffffff", "#3b82f6"] : ["#c084fc", "#34d399", "#fb923c"];
       explode(e.x, e.y, colors);
+      // Pick a word, avoiding an immediate repeat.
+      const lastWord = g.words[g.words.length - 1]?.text;
+      const choices = POP_WORDS.filter((w) => w !== lastWord);
+      const text = choices[Math.floor(Math.random() * choices.length)];
+      g.words.push({ text, x: e.x, y: e.y - 6, life: POP_LIFE, color: colors[0] });
       if (e.captive && !e.captive.rising) {
         // Shot down mid-dive: the captured ship is freed and rejoins the player.
         if (diving) g.rescue = { x: e.captive.x, y: e.captive.y, a: 0 };
@@ -556,6 +567,11 @@ const Swarm = () => {
         p.life -= dt;
       }
       g.parts = g.parts.filter((p) => p.life > 0);
+      for (const w of g.words) {
+        w.y -= 14 * dt; // drift up while fading
+        w.life -= dt;
+      }
+      g.words = g.words.filter((w) => w.life > 0);
 
       if (statusRef.current !== "playing") return;
 
@@ -904,6 +920,19 @@ const Swarm = () => {
         ctx.fillStyle = p.color;
         ctx.globalAlpha = Math.min(1, p.life * 2);
         ctx.fillRect(Math.round(p.x), Math.round(p.y), 1, 1);
+      }
+
+      ctx.font = "bold 8px ui-monospace, Menlo, monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      for (const w of g.words) {
+        const half = ctx.measureText(w.text).width / 2;
+        const x = Math.max(half + 2, Math.min(W - half - 2, w.x)); // keep on screen
+        ctx.globalAlpha = Math.min(1, w.life / (POP_LIFE * 0.6)); // hold, then fade
+        ctx.fillStyle = "#05060a";
+        ctx.fillText(w.text, Math.round(x) + 1, Math.round(w.y) + 1); // drop shadow for contrast
+        ctx.fillStyle = w.color;
+        ctx.fillText(w.text, Math.round(x), Math.round(w.y));
       }
       ctx.globalAlpha = 1;
     };
