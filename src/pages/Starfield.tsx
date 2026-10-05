@@ -91,12 +91,9 @@ const SpeedField = ({ settings }: { settings: Settings }) => {
       const v = reduce.matches ? Math.min(speed, 0.5) : speed;
       canvas.dataset.motion = reduce.matches ? "reduced" : "active";
 
-      // Fade the previous frame toward transparent, leaving motion trails
-      // while the page's gradient background shows through the canvas.
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.fillStyle = `rgba(0,0,0,${trail})`;
+      // Translucent clear leaves motion trails behind each star.
+      ctx.fillStyle = `rgba(5,6,10,${trail})`;
       ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = "source-over";
 
       const rgb = hexToRgb(color);
       for (const s of stars) {
@@ -216,7 +213,7 @@ const Starfield = () => {
     setSettings((s) => ({ ...s, [key]: v }));
 
   return (
-    <main className="min-h-screen text-white">
+    <main className="min-h-screen bg-[#05060a] text-white">
       <header className="relative flex h-[70vh] items-center justify-center overflow-hidden">
         <SpeedField settings={settings} />
         <div className="relative text-center">
