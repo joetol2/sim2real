@@ -218,7 +218,7 @@ const Starfield = () => {
         <SpeedField settings={settings} />
         <div className="relative text-center">
           <h1 className="text-2xl font-bold tracking-tight md:text-4xl">Starfield</h1>
-          <p className="mt-2 text-[0.5rem] text-white/60">Play with the controls below</p>
+          <p className="mt-2 text-xs text-white/60">Play with the controls below</p>
         </div>
       </header>
 
